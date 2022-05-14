@@ -1,0 +1,21 @@
+{
+  "language": "en-GB",
+  "words": [
+    "applypatch",
+    "changelist",
+    "commitlint",
+    "commitlintrc",
+    "dbaeumer",
+    "docgen",
+    "fsmonitor",
+    "jsii",
+    "mountainpass",
+    "outdir",
+    "prettierignore",
+    "projen",
+    "projenrc",
+    "sendemail",
+    "unbump",
+    "ungap"
+  ]
+}
