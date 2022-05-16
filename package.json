@@ -11,11 +11,11 @@
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
     "default": "npx projen default",
+    "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "post-compile": "npx projen post-compile",
-    "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
     "prepare": "npx projen prepare",
     "release": "npx projen release",
@@ -23,9 +23,13 @@
     "test:update": "npx projen test:update",
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
-    "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen"
+  },
+  "author": {
+    "name": "Mountain Pass",
+    "email": "info@mountain-pass.com.au",
+    "organization": true
   },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
@@ -48,12 +52,12 @@
     "jest": "^27",
     "jest-junit": "^13",
     "json-schema": "^0.4.0",
-    "npm-check-updates": "^12",
     "prettier": "^2.6.2",
     "projen": "^0.56.5",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^9",
+    "typedoc": "^0.21.4",
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
@@ -76,11 +80,22 @@
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "homepage": "https://github.com/mountain-pass/cool-bits-for-projen",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0",
   "bugs": {
     "url": "https://github.com/mountain-pass/cool-bits-for-projen/issues"
   },
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.ts?(x)",
       "<rootDir>/(test|src)/**/?(*.)+(spec|test).ts?(x)"

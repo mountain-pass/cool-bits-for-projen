@@ -9,6 +9,7 @@
     "docgen",
     "fsmonitor",
     "jsii",
+    "mergify",
     "mountainpass",
     "outdir",
     "prettierignore",

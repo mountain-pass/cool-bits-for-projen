@@ -87,11 +87,6 @@
       "type": "build"
     },
     {
-      "name": "npm-check-updates",
-      "version": "^12",
-      "type": "build"
-    },
-    {
       "name": "prettier",
       "type": "build"
     },
@@ -112,6 +107,11 @@
     {
       "name": "ts-node",
       "version": "^9",
+      "type": "build"
+    },
+    {
+      "name": "typedoc",
+      "version": "^0.21.4",
       "type": "build"
     },
     {
