@@ -24,7 +24,10 @@ export class EslintPrettierFixer extends Component {
     prettier: true,
     eslint: true,
   };
-  static defaultOptions: Required<EslintPrettierFixerOptions> = {
+  static defaultOptions: Dynamic<
+    DeepRequired<EslintPrettierFixerOptions>,
+    TypeScriptProject
+  > = {
     eslintPrettierFixer: true,
   };
 

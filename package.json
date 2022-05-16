@@ -28,6 +28,8 @@
     "projen": "npx projen"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.3.0",
+    "@commitlint/config-conventional": "^16.2.4",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.5.1",
     "@types/node": "^14",
@@ -58,6 +60,7 @@
     "projen": "^0.56.8"
   },
   "dependencies": {
+    "@commitlint/types": "^16.2.1",
     "merge": "^2.1.1",
     "traverse": "^0.6.6"
   },

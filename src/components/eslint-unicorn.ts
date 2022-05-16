@@ -27,7 +27,10 @@ export class EslintUnicorn extends Component {
   > = {
     eslint: true,
   };
-  static defaultOptions: Required<EslintUnicornOptions> = {
+  static defaultOptions: Dynamic<
+    DeepRequired<EslintUnicornOptions>,
+    TypeScriptProject
+  > = {
     eslintUnicorn: true,
   };
 

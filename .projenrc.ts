@@ -7,7 +7,7 @@ const projectOptions = Object.assign({
   name,
   description: "A collection of cool projen components",
   peerDeps: ["projen"],
-  deps: ["merge", "traverse"],
+  deps: ["merge", "traverse", "@commitlint/types"],
   bundledDeps: ["merge", "traverse"],
   devDeps: ["fs-extra", "@types/fs-extra", "@types/traverse"],
   keywords: ["typescript", "projen", "jsii"],

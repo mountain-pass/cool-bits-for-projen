@@ -2,7 +2,7 @@ import { TypeScriptProject } from "projen/lib/typescript";
 import { Recommended } from "../src";
 import { synthSnapshot, mkdtemp } from "./util";
 
-test("unicorn, husky, eslint-prettier-fixer are added to the project", () => {
+test("unicorn, husky, eslint-prettier-fixer, etc are added to the project", () => {
   const project = new TypeScriptProject({
     ...Recommended.defaultProjectOptions,
     outdir: mkdtemp(),
@@ -23,9 +23,10 @@ test("unicorn, husky, eslint-prettier-fixer are added to the project", () => {
       snapshot[".eslintrc.json"].extends.length - 1
     ]
   ).toEqual("prettier");
+  expect(Object.keys(snapshot)).toContain(".commitlintrc.json");
 });
 
-test("unicorn, husky, eslint-prettier-fixer can be turned off", () => {
+test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
   const project = new TypeScriptProject({
     ...Recommended.defaultProjectOptions,
     outdir: mkdtemp(),
@@ -36,6 +37,7 @@ test("unicorn, husky, eslint-prettier-fixer can be turned off", () => {
     eslintUnicorn: false,
     husky: false,
     eslintPrettierFixer: false,
+    commitlint: false,
   });
   project.eslint?.addExtends("NotPrettier");
   const snapshot = synthSnapshot(project);
@@ -51,4 +53,5 @@ test("unicorn, husky, eslint-prettier-fixer can be turned off", () => {
       snapshot[".eslintrc.json"].extends.length - 1
     ]
   ).not.toEqual("prettier");
+  expect(Object.keys(snapshot)).not.toContain(".commitlintrc.json");
 });
