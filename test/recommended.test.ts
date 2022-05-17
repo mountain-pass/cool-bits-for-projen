@@ -24,6 +24,7 @@ test("unicorn, husky, eslint-prettier-fixer, etc are added to the project", () =
     ]
   ).toEqual("prettier");
   expect(Object.keys(snapshot)).toContain(".commitlintrc.json");
+  expect(Object.keys(snapshot)).toContain(".vscode/extensions.json");
 });
 
 test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
@@ -38,6 +39,7 @@ test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
     husky: false,
     eslintPrettierFixer: false,
     commitlint: false,
+    vscodeExtensionRecommendations: false,
   });
   project.eslint?.addExtends("NotPrettier");
   const snapshot = synthSnapshot(project);
@@ -54,4 +56,5 @@ test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
     ]
   ).not.toEqual("prettier");
   expect(Object.keys(snapshot)).not.toContain(".commitlintrc.json");
+  expect(Object.keys(snapshot)).not.toContain(".vscode/extensions.json");
 });

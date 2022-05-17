@@ -1,4 +1,4 @@
-import { Component } from "projen";
+import { Component, Project } from "projen";
 import { NodeProject } from "projen/lib/javascript";
 import { TypeScriptProject } from "projen/lib/typescript";
 import { Dynamic } from "../util/dynamic";
@@ -9,6 +9,10 @@ import {
 } from "./eslint-prettier-fixer";
 import { EslintUnicorn, EslintUnicornOptions } from "./eslint-unicorn";
 import { Husky, HuskyOptions } from "./husky";
+import {
+  VscodeExtensionRecommendations,
+  VscodeExtensionRecommendationsOptions,
+} from "./vscode-extension-recommendations";
 
 /**
  * option to enable or disable unicorn in eslint
@@ -19,13 +23,15 @@ export type RecommendedOptions = Dynamic<
 > &
   Dynamic<EslintUnicornOptions, TypeScriptProject> &
   Dynamic<HuskyOptions, NodeProject> &
-  Dynamic<CommitlintOptions, NodeProject>;
+  Dynamic<CommitlintOptions, NodeProject> &
+  Dynamic<VscodeExtensionRecommendationsOptions, Project>;
 
 export const defaultRecommendedOptions: RecommendedOptions = {
   ...EslintPrettierFixer.defaultOptions,
   ...EslintUnicorn.defaultOptions,
   ...Husky.defaultOptions,
   ...Commitlint.defaultOptions,
+  ...VscodeExtensionRecommendations.defaultOptions,
 };
 
 /**
@@ -40,6 +46,7 @@ export class Recommended extends Component {
   eslintUnicorn: EslintUnicorn;
   husky: Husky;
   commitlint: Commitlint;
+  vscodeExtensionRecommendations: VscodeExtensionRecommendations;
   /**
    * adds MountainPass recommended settings to the project
    *
@@ -52,5 +59,9 @@ export class Recommended extends Component {
     this.eslintUnicorn = new EslintUnicorn(project, options);
     this.husky = new Husky(project, options);
     this.commitlint = new Commitlint(project, this.husky, options);
+    this.vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
+      project,
+      options
+    );
   }
 }
