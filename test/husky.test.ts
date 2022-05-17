@@ -15,7 +15,7 @@ test("husky is added", () => {
   expect(snapshot["package.json"].devDependencies).toHaveProperty("husky");
   expect(snapshot["package.json"].scripts).toHaveProperty("prepare");
   expect(Object.keys(snapshot)).toContain(".husky/pre-push");
-  expect(snapshot[".husky/pre-push"]).toMatch(/^\s*npm run test:update\s*$/m);
+  expect(snapshot[".husky/pre-push"]).toMatch(/^\s*npm run test\s*$/m);
 });
 
 test("husky is not added", () => {
@@ -65,7 +65,7 @@ test("extra husk hook step is added", () => {
   expect(snapshot["package.json"].devDependencies).toHaveProperty("husky");
   expect(snapshot["package.json"].scripts).toHaveProperty("prepare");
   expect(Object.keys(snapshot)).toContain(".husky/pre-push");
-  expect(snapshot[".husky/pre-push"]).toMatch(/^\s*npm run test:update\s*$/m);
+  expect(snapshot[".husky/pre-push"]).toMatch(/^\s*npm run test\s*$/m);
   expect(snapshot[".husky/pre-push"]).toMatch(command);
 });
 

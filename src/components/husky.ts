@@ -70,7 +70,7 @@ export class Husky extends Component {
       "post-checkout": [],
       "post-merge": [],
       "pre-push": (project: NodeProject) => {
-        const lines = ["npm run test:update"];
+        const lines = ["npm run test"];
         if (project instanceof TypeScriptProject && project.eslint) {
           lines.push("npm run eslint");
         }
