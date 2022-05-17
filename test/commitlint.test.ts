@@ -94,8 +94,6 @@ test("override husk hook", () => {
   expect(snapshot["package.json"].devDependencies).toHaveProperty("husky");
   expect(snapshot["package.json"].scripts).toHaveProperty("prepare");
   expect(Object.keys(snapshot)).toContain(".husky/pre-push");
-  expect(snapshot[".husky/pre-push"]).not.toMatch(
-    /^\s*npm run test\s*$/m
-  );
+  expect(snapshot[".husky/pre-push"]).not.toMatch(/^\s*npm run test\s*$/m);
   expect(snapshot[".husky/pre-push"]).toMatch(command);
 });

@@ -31,6 +31,7 @@ export class Commitlint extends Component {
     commitlint: true,
     commitlintOptions: { extends: ["@commitlint/config-conventional"] },
   };
+
   options: DeepRequired<Omit<CommitlintOptions, "commitlintOptions">> &
     Required<Pick<CommitlintOptions, "commitlintOptions">>;
   commitlintrc?: JsonFile;
@@ -39,6 +40,7 @@ export class Commitlint extends Component {
    * adds commitlint to the project
    *
    * @param project the project to add to
+   * @param husky optional Husky component, used to add a commit-msg hook
    * @param options - see `CommitLintOptions`
    */
   constructor(

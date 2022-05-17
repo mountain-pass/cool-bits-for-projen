@@ -3,6 +3,7 @@ import { NodeProject } from "projen/lib/javascript";
 import { TypeScriptProject } from "projen/lib/typescript";
 import { Dynamic } from "../util/dynamic";
 import { Commitlint, CommitlintOptions } from "./commitlint";
+import { EslintJsdoc, EslintJsdocOptions } from "./eslint-jsdoc";
 import {
   EslintPrettierFixer,
   EslintPrettierFixerOptions,
@@ -24,7 +25,8 @@ export type RecommendedOptions = Dynamic<
   Dynamic<EslintUnicornOptions, TypeScriptProject> &
   Dynamic<HuskyOptions, NodeProject> &
   Dynamic<CommitlintOptions, NodeProject> &
-  Dynamic<VscodeExtensionRecommendationsOptions, Project>;
+  Dynamic<VscodeExtensionRecommendationsOptions, Project> &
+  Dynamic<EslintJsdocOptions, TypeScriptProject>;
 
 export const defaultRecommendedOptions: RecommendedOptions = {
   ...EslintPrettierFixer.defaultOptions,
@@ -32,6 +34,7 @@ export const defaultRecommendedOptions: RecommendedOptions = {
   ...Husky.defaultOptions,
   ...Commitlint.defaultOptions,
   ...VscodeExtensionRecommendations.defaultOptions,
+  ...EslintJsdoc.defaultOptions,
 };
 
 /**
@@ -41,12 +44,14 @@ export class Recommended extends Component {
   static defaultProjectOptions = {
     ...EslintPrettierFixer.defaultProjectOptions,
     ...EslintUnicorn.defaultProjectOptions,
+    ...EslintJsdoc.defaultProjectOptions,
   };
   eslintPrettier: EslintPrettierFixer;
   eslintUnicorn: EslintUnicorn;
   husky: Husky;
   commitlint: Commitlint;
   vscodeExtensionRecommendations: VscodeExtensionRecommendations;
+  eslintJsdoc: EslintJsdoc;
   /**
    * adds MountainPass recommended settings to the project
    *
@@ -63,5 +68,6 @@ export class Recommended extends Component {
       project,
       options
     );
+    this.eslintJsdoc = new EslintJsdoc(project, options);
   }
 }

@@ -5,3 +5,4 @@ export * from "./components/recommended";
 export * from "./components/husky";
 export * from "./components/commitlint";
 export * from "./components/vscode-extension-recommendations";
+export * from "./components/eslint-jsdoc";

@@ -1,5 +1,8 @@
 import { DeepRequired } from "../src";
 
+/**
+ * just testing
+ */
 type HelloType = DeepRequired<{
   name?: string;
 }>;

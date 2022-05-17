@@ -8,7 +8,9 @@
     "@typescript-eslint",
     "import",
     "prettier",
-    "unicorn"
+    "unicorn",
+    "jsdoc",
+    "jsdoc-typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -21,6 +23,7 @@
     "prettier",
     "plugin:prettier/recommended",
     "plugin:unicorn/recommended",
+    "plugin:jsdoc/recommended",
     "prettier"
   ],
   "settings": {
@@ -129,7 +132,36 @@
         ]
       }
     ],
-    "unicorn/prefer-node-protocol": "off"
+    "unicorn/prefer-node-protocol": "off",
+    "jsdoc/require-jsdoc": [
+      "error",
+      {
+        "contexts": [
+          "TSInterfaceDeclaration",
+          "TSTypeAliasDeclaration",
+          "TSEnumDeclaration",
+          "PropertyDeclaration",
+          "ClassProperty",
+          "ClassDeclaration",
+          "MethodDefinition"
+        ]
+      }
+    ],
+    "jsdoc/require-description": [
+      "error",
+      {
+        "contexts": [
+          "any"
+        ]
+      }
+    ],
+    "jsdoc/check-indentation": "error",
+    "jsdoc/check-line-alignment": "error",
+    "jsdoc/check-syntax": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-param-type": "off",
+    "jsdoc/require-param-description": "error",
+    "jsdoc/require-returns-type": "off"
   },
   "overrides": [
     {

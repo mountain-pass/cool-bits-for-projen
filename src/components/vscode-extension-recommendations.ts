@@ -62,6 +62,10 @@ export class VscodeExtensionRecommendations extends Component {
     );
   }
 
+  /**
+   * Adds JsonFile containing the recommendations and makes
+   * sure it's not git ignored
+   */
   preSynthesize(): void {
     if (
       this.options.vscodeExtensionRecommendations &&
