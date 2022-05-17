@@ -63,11 +63,14 @@ export class Recommended extends Component {
     this.eslintPrettier = new EslintPrettierFixer(project, options);
     this.eslintUnicorn = new EslintUnicorn(project, options);
     this.husky = new Husky(project, options);
-    this.commitlint = new Commitlint(project, this.husky, options);
     this.vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
       project,
       options
     );
+    this.commitlint = new Commitlint(project, options, {
+      husky: this.husky,
+      vscodeExtensionRecommendations: this.vscodeExtensionRecommendations,
+    });
     this.eslintJsdoc = new EslintJsdoc(project, options);
   }
 }

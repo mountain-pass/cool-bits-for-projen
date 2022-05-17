@@ -4,6 +4,7 @@ import { NodeProject } from "projen/lib/javascript";
 import { DeepRequired } from "../util/deep-required";
 import { Dynamic, resolve } from "../util/dynamic";
 import { Husky } from "./husky";
+import { VscodeExtensionRecommendations } from "./vscode-extension-recommendations";
 
 /**
  * option to enable or disable husky and commands to run for each hook
@@ -40,13 +41,18 @@ export class Commitlint extends Component {
    * adds commitlint to the project
    *
    * @param project the project to add to
-   * @param husky optional Husky component, used to add a commit-msg hook
    * @param options - see `CommitLintOptions`
+   * @param dependencies components that Commitlint depends on
+   * @param dependencies.husky used to add a commitlint commit-msg hook
+   * @param dependencies.vscodeExtensionRecommendations used to add vscode commitlint editor plugin recommendation
    */
   constructor(
     project: NodeProject,
-    husky?: Husky,
-    options?: Dynamic<CommitlintOptions, NodeProject>
+    options?: Dynamic<CommitlintOptions, NodeProject>,
+    dependencies?: {
+      husky?: Husky;
+      vscodeExtensionRecommendations?: VscodeExtensionRecommendations;
+    }
   ) {
     super(project);
     this.options = resolve(project, options, Commitlint.defaultOptions);
@@ -55,9 +61,13 @@ export class Commitlint extends Component {
       this.commitlintrc = new JsonFile(project, ".commitlintrc.json", {
         obj: this.options.commitlintOptions,
       });
-      if (husky) {
-        husky.addHook("commit-msg", 'npx --no -- commitlint --edit "${1}"');
-      }
+      dependencies?.husky?.addHook(
+        "commit-msg",
+        'npx --no -- commitlint --edit "${1}"'
+      );
+      dependencies?.vscodeExtensionRecommendations?.addRecommendations(
+        "adam-bender.commit-message-editor"
+      );
     }
   }
 }

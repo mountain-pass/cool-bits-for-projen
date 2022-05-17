@@ -1446,11 +1446,6 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-comment-parser@0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-0.7.2.tgz#baf6d99b42038678b81096f15b630d18142f4b8a"
-  integrity sha512-4Rjb1FnxtOcv9qsfuaNuVsmmVn4ooVoBHzYfyKteiXwIU84PClyGA5jASoFMwPV93+FPh9spwueXauxFJZkGAg==
-
 comment-parser@1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-1.3.1.tgz#3d7ea3adaf9345594aedee6563f422348f165c1b"
@@ -2002,13 +1997,6 @@ eslint-plugin-import@^2.26.0:
     object.values "^1.1.5"
     resolve "^1.22.0"
     tsconfig-paths "^3.14.1"
-
-eslint-plugin-jsdoc-typescript@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc-typescript/-/eslint-plugin-jsdoc-typescript-2.1.0.tgz#ea102f24539b2f22b4ec1f355022b9b99efe2740"
-  integrity sha512-OkNkcmOoB9c3k3Grm6oDTB47/X3SYlzswo87yHOD8Dt7yjJ1eUlJdA8DtIAVRUKlRAIRpJtvt1zpd5IsIGulfA==
-  dependencies:
-    comment-parser "0.7.2"
 
 eslint-plugin-jsdoc@^39.2.9:
   version "39.2.9"

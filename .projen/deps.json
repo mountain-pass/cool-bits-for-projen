@@ -56,10 +56,6 @@
       "type": "build"
     },
     {
-      "name": "eslint-plugin-jsdoc-typescript",
-      "type": "build"
-    },
-    {
       "name": "eslint-plugin-prettier",
       "type": "build"
     },

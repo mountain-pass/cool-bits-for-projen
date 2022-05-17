@@ -9,8 +9,7 @@
     "import",
     "prettier",
     "unicorn",
-    "jsdoc",
-    "jsdoc-typescript"
+    "jsdoc"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

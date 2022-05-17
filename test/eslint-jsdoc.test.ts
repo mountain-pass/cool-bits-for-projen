@@ -15,9 +15,9 @@ test("jsdoc is added to eslint", () => {
   expect(snapshot["package.json"].devDependencies).toHaveProperty(
     "eslint-plugin-jsdoc"
   );
-  expect(snapshot["package.json"].devDependencies).toHaveProperty(
-    "eslint-plugin-jsdoc-typescript"
-  );
+  // expect(snapshot["package.json"].devDependencies).toHaveProperty(
+  //   "eslint-plugin-jsdoc-typescript"
+  // );
 
   expect(Object.keys(snapshot)).toContain(".eslintrc.json");
   expect(snapshot[".eslintrc.json"].plugins).toContain("jsdoc");
@@ -39,9 +39,9 @@ test("jsdoc is not added when disabled", () => {
   expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
     "eslint-plugin-jsdoc"
   );
-  expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
-    "eslint-plugin-jsdoc-typescript"
-  );
+  // expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
+  //   "eslint-plugin-jsdoc-typescript"
+  // );
 
   expect(Object.keys(snapshot)).toContain(".eslintrc.json");
   expect(snapshot[".eslintrc.json"].plugins).not.toContain("jsdoc");
@@ -64,9 +64,9 @@ test("jsdoc is not added when eslint is disabled", () => {
   expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
     "eslint-plugin-jsdoc"
   );
-  expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
-    "eslint-plugin-jsdoc-typescript"
-  );
+  // expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
+  //   "eslint-plugin-jsdoc-typescript"
+  // );
 
   expect(Object.keys(snapshot)).not.toContain(".eslintrc.json");
 });
