@@ -52,6 +52,7 @@ junit.xml
 /dist/
 !/.eslintrc.json
 !/.commitlintrc.json
+/docs
 !/.husky/commit-msg
 !/.husky/pre-push
 !/.vscode/extensions.json

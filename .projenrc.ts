@@ -118,4 +118,7 @@ const project = new TypeScriptProject({
   ...Recommended.defaultProjectOptions,
 });
 new Recommended(project);
+
+project.addGitIgnore("/docs");
+
 project.synth();
