@@ -97,13 +97,16 @@ export class CSpell extends Component {
       // add a spell checker task
       project.addTask("spellcheck", {
         description: "check all the files for spelling errors",
-        steps: [{ exec: 'cspell lint --gitignore "**/*"' }],
+        steps: [{ exec: 'cspell lint --gitignore --show-suggestions "**/*"' }],
       });
       // check spelling on commit
       dependencies?.husky?.addHook("pre-commit", "npm run spellcheck");
 
       // adds spell checking of the commit message
-      dependencies?.husky?.addHook("commit-msg", 'npx --no -- cspell "${1}"');
+      dependencies?.husky?.addHook(
+        "commit-msg",
+        'npx --no -- cspell lint --show-suggestions "${1}"'
+      );
       this.options.cSpellOptions.words.push(
         ...(dependencies?.husky?.getHookNames() || [])
       );

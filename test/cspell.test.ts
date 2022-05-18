@@ -21,7 +21,7 @@ test("cSpell is added with Husky and VscodeExtensionRecommendations", () => {
   expect(Object.keys(snapshot)).toContain(".cspell.json");
   expect(Object.keys(snapshot)).toContain(".project-words.txt");
   expect(husky.options.huskyHooks["commit-msg"]).toContain(
-    'npx --no -- cspell "${1}"'
+    'npx --no -- cspell lint --show-suggestions "${1}"'
   );
   expect(husky.options.huskyHooks["pre-commit"]).toContain(
     "npm run spellcheck"
@@ -56,7 +56,7 @@ test("cSpell is not added", () => {
   expect(Object.keys(snapshot)).not.toContain(".cspell.json");
   expect(Object.keys(snapshot)).not.toContain(".project-words.txt");
   expect(husky.options.huskyHooks["commit-msg"]).not.toContain(
-    'npx --no -- cspell "${1}"'
+    'npx --no -- cspell lint --show-suggestions "${1}"'
   );
   expect(husky.options.huskyHooks["pre-commit"]).not.toContain(
     "npm run spellcheck"
@@ -81,7 +81,7 @@ test("cSpell is added without Husky and VscodeExtensionRecommendations", () => {
   expect(Object.keys(snapshot)).toContain(".cspell.json");
   expect(Object.keys(snapshot)).toContain(".project-words.txt");
   expect(husky.options.huskyHooks["commit-msg"]).not.toContain(
-    'npx --no -- cspell "${1}"'
+    'npx --no -- cspell lint --show-suggestions "${1}"'
   );
   expect(husky.options.huskyHooks["pre-commit"]).not.toContain(
     "npm run spellcheck"
@@ -116,7 +116,7 @@ test("cSpell is added with Husky and VscodeExtensionRecommendations to a JsiiPro
   expect(Object.keys(snapshot)).toContain(".cspell.json");
   expect(Object.keys(snapshot)).toContain(".project-words.txt");
   expect(husky.options.huskyHooks["commit-msg"]).toContain(
-    'npx --no -- cspell "${1}"'
+    'npx --no -- cspell lint --show-suggestions "${1}"'
   );
   expect(husky.options.huskyHooks["pre-commit"]).toContain(
     "npm run spellcheck"

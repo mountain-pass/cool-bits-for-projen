@@ -184,7 +184,7 @@
       "description": "check all the files for spelling errors",
       "steps": [
         {
-          "exec": "cspell lint --gitignore \"**/*\""
+          "exec": "cspell lint --gitignore --show-suggestions \"**/*\""
         }
       ]
     },
