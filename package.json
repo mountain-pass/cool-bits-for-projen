@@ -77,10 +77,15 @@
     "traverse"
   ],
   "keywords": [
+    "cspell",
+    "eslint-jsdoc",
+    "eslint-unicorn",
+    "husky",
+    "prettier",
     "projen",
     "projen-component",
-    "projen-component-typescript",
-    "typescript"
+    "typescript",
+    "vscode-extension-recommendations"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",

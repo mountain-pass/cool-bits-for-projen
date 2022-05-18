@@ -86,4 +86,19 @@ new EslintUnicorn(project);
 project.synth();
 ```
 
-5. Run `npx projen` to regenerate the project files 
+5. Run `npx projen` to generate the project files 
+
+
+## Components
+
+| Component | Functionality | Uses | Base Project Type Required | Included in Recommended |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| **`Commitlint`** | Checks if your commit messages meet the [conventional commit format](https://conventionalcommits.org/). | [commitlint](https://github.com/conventional-changelog/commitlint) | NodeProject |  ✅ |
+| **`CSpell`** | Provides spell checking for your code and your commit messages | [cspell](https://github.com/streetsidesoftware/cspell) | NodeProject | ✅ |
+| **`EslintJsdoc`** | Provides JSDoc specific linting rules for ESLint | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc) | TypeScriptProject |  ✅ |
+| **`EslintPrettierFixer`** | Ensures `prettier` is the last entry in your eslint `extends` section, which is needed for prettier to work correctly with eslint | | TypeScriptProject | ✅ |
+| **`EslintUnicorn`** | Provides more than 100 powerful ESLint rules | [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn) | TypeScriptProject | ✅ |
+| **`Husky`** | Git hooks made easy 🐶 woof! | [husky](https://github.com/typicode/husky) | NodeProject | ✅ |
+| **`Recommended`** | Includes all the "included in recommended" components in this table | | TypeScriptProject |  |
+| **`VscodeExtensionRecommendations`** | Manages vscode extension recommendations for your project | | Project | ✅ |
+

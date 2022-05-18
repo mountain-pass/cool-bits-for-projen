@@ -8,7 +8,7 @@ import { Husky } from "./husky";
 import { VscodeExtensionRecommendations } from "./vscode-extension-recommendations";
 
 /**
- * option to enable or disable husky and commands to run for each hook
+ * option to enable or disable commitlint
  */
 export type CommitlintOptions = {
   /**
@@ -21,7 +21,8 @@ export type CommitlintOptions = {
 };
 
 /**
- * adds commitlint to the project
+ * The `Commitlint` component adds [conventional-changelog/commitlint](https://github.com/conventional-changelog/commitlint) to
+ * your project, which checks if your commit messages meet the [conventional commit format](https://conventionalcommits.org/).
  */
 export class Commitlint extends Component {
   static defaultOptions: Dynamic<
