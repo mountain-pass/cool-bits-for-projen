@@ -102,7 +102,7 @@ test("recommendations are added to TypeScript project, and extra recommendation 
   expect(snapshot[".gitignore"]).toMatch("!/.vscode/extensions.json");
 });
 
-test("recommendations are added to TypeScript project, but recommendations are overriden", () => {
+test("recommendations are added to TypeScript project, but recommendations are overridden", () => {
   // WHEN
   const project = new TypeScriptProject({
     outdir: mkdtemp(),

@@ -169,4 +169,13 @@ export class Husky extends Component {
   deleteHook(hook: HuskyHook): void {
     this.options.huskyHooks[hook] = [];
   }
+
+  /**
+   * get the list of all the hook names
+   *
+   * @returns the hook names
+   */
+  getHookNames(): string[] {
+    return Object.keys(Husky.defaultOptions.huskyHooks);
+  }
 }

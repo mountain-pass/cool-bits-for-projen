@@ -1,8 +1,10 @@
 import { Component, Project } from "projen";
 import { NodeProject } from "projen/lib/javascript";
 import { TypeScriptProject } from "projen/lib/typescript";
+import { CSpellOptions } from "..";
 import { Dynamic } from "../util/dynamic";
 import { Commitlint, CommitlintOptions } from "./commitlint";
+import { CSpell } from "./cspell";
 import { EslintJsdoc, EslintJsdocOptions } from "./eslint-jsdoc";
 import {
   EslintPrettierFixer,
@@ -26,7 +28,8 @@ export type RecommendedOptions = Dynamic<
   Dynamic<HuskyOptions, NodeProject> &
   Dynamic<CommitlintOptions, NodeProject> &
   Dynamic<VscodeExtensionRecommendationsOptions, Project> &
-  Dynamic<EslintJsdocOptions, TypeScriptProject>;
+  Dynamic<EslintJsdocOptions, TypeScriptProject> &
+  Dynamic<CSpellOptions, NodeProject>;
 
 export const defaultRecommendedOptions: RecommendedOptions = {
   ...EslintPrettierFixer.defaultOptions,
@@ -35,6 +38,7 @@ export const defaultRecommendedOptions: RecommendedOptions = {
   ...Commitlint.defaultOptions,
   ...VscodeExtensionRecommendations.defaultOptions,
   ...EslintJsdoc.defaultOptions,
+  ...CSpell.defaultOptions,
 };
 
 /**
@@ -52,6 +56,7 @@ export class Recommended extends Component {
   commitlint: Commitlint;
   vscodeExtensionRecommendations: VscodeExtensionRecommendations;
   eslintJsdoc: EslintJsdoc;
+  cSpell: CSpell;
   /**
    * adds MountainPass recommended settings to the project
    *
@@ -67,9 +72,14 @@ export class Recommended extends Component {
       project,
       options
     );
+    this.cSpell = new CSpell(project, options, {
+      husky: this.husky,
+      vscodeExtensionRecommendations: this.vscodeExtensionRecommendations,
+    });
     this.commitlint = new Commitlint(project, options, {
       husky: this.husky,
       vscodeExtensionRecommendations: this.vscodeExtensionRecommendations,
+      cSpell: this.cSpell,
     });
     this.eslintJsdoc = new EslintJsdoc(project, options);
   }

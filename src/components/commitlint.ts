@@ -3,6 +3,7 @@ import { Component, JsonFile } from "projen";
 import { NodeProject } from "projen/lib/javascript";
 import { DeepRequired } from "../util/deep-required";
 import { Dynamic, resolve } from "../util/dynamic";
+import { CSpell } from "./cspell";
 import { Husky } from "./husky";
 import { VscodeExtensionRecommendations } from "./vscode-extension-recommendations";
 
@@ -21,7 +22,6 @@ export type CommitlintOptions = {
 
 /**
  * adds commitlint to the project
- *
  */
 export class Commitlint extends Component {
   static defaultOptions: Dynamic<
@@ -45,6 +45,7 @@ export class Commitlint extends Component {
    * @param dependencies components that Commitlint depends on
    * @param dependencies.husky used to add a commitlint commit-msg hook
    * @param dependencies.vscodeExtensionRecommendations used to add vscode commitlint editor plugin recommendation
+   * @param dependencies.cSpell used to add words to the dictionary
    */
   constructor(
     project: NodeProject,
@@ -52,6 +53,7 @@ export class Commitlint extends Component {
     dependencies?: {
       husky?: Husky;
       vscodeExtensionRecommendations?: VscodeExtensionRecommendations;
+      cSpell?: CSpell;
     }
   ) {
     super(project);
@@ -68,6 +70,7 @@ export class Commitlint extends Component {
       dependencies?.vscodeExtensionRecommendations?.addRecommendations(
         "adam-bender.commit-message-editor"
       );
+      dependencies?.cSpell?.addWords("commitlint");
     }
   }
 }

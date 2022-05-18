@@ -111,4 +111,13 @@ export class VscodeExtensionRecommendations extends Component {
   deleteRecommendations(): void {
     this.options.vscodeExtensionRecommendationsOptions.recommendations = [];
   }
+
+  /**
+   * get the list of recommendations
+   *
+   * @returns the recommendations
+   */
+  getRecommendations(): string[] {
+    return this.options.vscodeExtensionRecommendationsOptions.recommendations;
+  }
 }

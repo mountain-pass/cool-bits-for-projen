@@ -19,6 +19,7 @@
     "pre-compile": "npx projen pre-compile",
     "prepare": "npx projen prepare",
     "release": "npx projen release",
+    "spellcheck": "npx projen spellcheck",
     "test": "npx projen test",
     "test:update": "npx projen test:update",
     "test:watch": "npx projen test:watch",
@@ -40,6 +41,7 @@
     "@types/traverse": "^0.6.32",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
+    "cspell": "*",
     "eslint": "^8",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -66,6 +68,7 @@
   },
   "dependencies": {
     "@commitlint/types": "^16.2.1",
+    "@cspell/cspell-types": "*",
     "merge": "^2.1.1",
     "traverse": "^0.6.6"
   },
@@ -74,8 +77,9 @@
     "traverse"
   ],
   "keywords": [
-    "jsii",
     "projen",
+    "projen-component",
+    "projen-component-typescript",
     "typescript"
   ],
   "main": "lib/index.js",

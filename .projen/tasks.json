@@ -179,6 +179,15 @@
         }
       ]
     },
+    "spellcheck": {
+      "name": "spellcheck",
+      "description": "check all the files for spelling errors",
+      "steps": [
+        {
+          "exec": "cspell lint --gitignore \"**/*\""
+        }
+      ]
+    },
     "test": {
       "name": "test",
       "description": "Run tests",

@@ -1,6 +1,7 @@
 {
   "files": [
     ".commitlintrc.json",
+    ".cspell.json",
     ".eslintrc.json",
     ".gitattributes",
     ".github/dependabot.yml",
@@ -11,6 +12,7 @@
     ".github/workflows/release.yml",
     ".gitignore",
     ".husky/commit-msg",
+    ".husky/pre-commit",
     ".husky/pre-push",
     ".mergify.yml",
     ".npmignore",
