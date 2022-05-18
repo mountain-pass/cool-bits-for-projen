@@ -1,3 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
+cat "${1}"
+npx --no -- cspell "${1}"
 npx --no -- commitlint --edit "${1}"

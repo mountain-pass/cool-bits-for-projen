@@ -36,6 +36,10 @@
       "type": "build"
     },
     {
+      "name": "cspell",
+      "type": "build"
+    },
+    {
       "name": "eslint-config-prettier",
       "type": "build"
     },
@@ -136,6 +140,10 @@
     },
     {
       "name": "@commitlint/types",
+      "type": "runtime"
+    },
+    {
+      "name": "@cspell/cspell-types",
       "type": "runtime"
     },
     {

@@ -2,6 +2,7 @@
 
 *.snap linguist-generated
 /.commitlintrc.json linguist-generated
+/.cspell.json linguist-generated
 /.eslintrc.json linguist-generated
 /.gitattributes linguist-generated
 /.github/dependabot.yml linguist-generated
@@ -12,6 +13,7 @@
 /.github/workflows/release.yml linguist-generated
 /.gitignore linguist-generated
 /.husky/commit-msg linguist-generated
+/.husky/pre-commit linguist-generated
 /.husky/pre-push linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated

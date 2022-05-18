@@ -6,3 +6,4 @@ export * from "./components/husky";
 export * from "./components/commitlint";
 export * from "./components/vscode-extension-recommendations";
 export * from "./components/eslint-jsdoc";
+export * from "./components/cspell";
