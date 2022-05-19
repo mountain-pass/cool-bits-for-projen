@@ -126,7 +126,10 @@ export class CSpell extends Component {
         ...(this.dependencies?.vscodeExtensionRecommendations
           ?.getRecommendations()
           .flatMap((recommendation) => recommendation.split(".")) || []),
-        ...this.project.deps.all.map((dep) => dep.name)
+        ...this.project.deps.all
+          .map((dep) => dep.name)
+          .flatMap((name) => name.split("/"))
+          .map((name) => name.replace(/^@/, ""))
       );
       this.cSpellConfigFile = new JsonFile(this.project, ".cspell.json", {
         obj: this.options.cSpellOptions,
