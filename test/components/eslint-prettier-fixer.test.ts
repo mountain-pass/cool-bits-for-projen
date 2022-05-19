@@ -1,6 +1,6 @@
 import { TypeScriptProject } from "projen/lib/typescript";
-import { EslintPrettierFixer } from "../src";
-import { synthSnapshot, mkdtemp } from "./util";
+import { EslintPrettierFixer } from "../../src";
+import { synthSnapshot, mkdtemp } from "../util/util";
 
 test("prettier is added last to eslint", () => {
   // WHEN

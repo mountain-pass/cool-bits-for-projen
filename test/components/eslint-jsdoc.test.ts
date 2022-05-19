@@ -1,60 +1,72 @@
 import { TypeScriptProject } from "projen/lib/typescript";
-import { EslintUnicorn } from "../src";
-import { synthSnapshot, mkdtemp } from "./util";
+import { EslintJsdoc } from "../../src";
+import { synthSnapshot, mkdtemp } from "../util/util";
 
-test("unicorn is added to eslint", () => {
+test("jsdoc is added to eslint", () => {
   const project = new TypeScriptProject({
-    ...EslintUnicorn.defaultProjectOptions,
+    ...EslintJsdoc.defaultProjectOptions,
     outdir: mkdtemp(),
     name: "test-project",
     defaultReleaseBranch: "main",
   });
-  new EslintUnicorn(project);
+  new EslintJsdoc(project);
   const snapshot = synthSnapshot(project);
 
   expect(snapshot["package.json"].devDependencies).toHaveProperty(
-    "eslint-plugin-unicorn"
+    "eslint-plugin-jsdoc"
   );
+  // expect(snapshot["package.json"].devDependencies).toHaveProperty(
+  //   "eslint-plugin-jsdoc-typescript"
+  // );
+
   expect(Object.keys(snapshot)).toContain(".eslintrc.json");
-  expect(snapshot[".eslintrc.json"].plugins).toContain("unicorn");
+  expect(snapshot[".eslintrc.json"].plugins).toContain("jsdoc");
   expect(snapshot[".eslintrc.json"].extends).toContain(
-    "plugin:unicorn/recommended"
+    "plugin:jsdoc/recommended"
   );
 });
 
-test("unicorn is not added when disabled", () => {
+test("jsdoc is not added when disabled", () => {
   const project = new TypeScriptProject({
-    ...EslintUnicorn.defaultProjectOptions,
+    ...EslintJsdoc.defaultProjectOptions,
     outdir: mkdtemp(),
     name: "test-project",
     defaultReleaseBranch: "main",
   });
-  new EslintUnicorn(project, { eslintUnicorn: false });
+  new EslintJsdoc(project, { eslintJsdoc: false });
   const snapshot = synthSnapshot(project);
 
   expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
-    "eslint-plugin-unicorn"
+    "eslint-plugin-jsdoc"
   );
+  // expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
+  //   "eslint-plugin-jsdoc-typescript"
+  // );
+
   expect(Object.keys(snapshot)).toContain(".eslintrc.json");
-  expect(snapshot[".eslintrc.json"].plugins).not.toContain("unicorn");
+  expect(snapshot[".eslintrc.json"].plugins).not.toContain("jsdoc");
   expect(snapshot[".eslintrc.json"].extends).not.toContain(
-    "plugin:unicorn/recommended"
+    "plugin:jsdoc/recommended"
   );
 });
 
-test("unicorn is not added when eslint is disabled", () => {
+test("jsdoc is not added when eslint is disabled", () => {
   const project = new TypeScriptProject({
-    ...EslintUnicorn.defaultProjectOptions,
+    ...EslintJsdoc.defaultProjectOptions,
     outdir: mkdtemp(),
     name: "test-project",
     defaultReleaseBranch: "main",
     eslint: false,
   });
-  new EslintUnicorn(project);
+  new EslintJsdoc(project);
   const snapshot = synthSnapshot(project);
 
   expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
-    "eslint-plugin-unicorn"
+    "eslint-plugin-jsdoc"
   );
+  // expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
+  //   "eslint-plugin-jsdoc-typescript"
+  // );
+
   expect(Object.keys(snapshot)).not.toContain(".eslintrc.json");
 });

@@ -1,6 +1,6 @@
 import { TypeScriptProject } from "projen/lib/typescript";
-import { Husky, Commitlint, VscodeExtensionRecommendations } from "../src";
-import { synthSnapshot, mkdtemp } from "./util";
+import { Husky, Commitlint, VscodeExtensionRecommendations } from "../../src";
+import { synthSnapshot, mkdtemp } from "../util/util";
 
 test("commitlint is added with Husky and VscodeExtensionRecommendations", () => {
   // WHEN

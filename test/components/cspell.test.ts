@@ -1,7 +1,7 @@
 import { JsiiProject } from "projen/lib/cdk";
 import { TypeScriptProject } from "projen/lib/typescript";
-import { Husky, CSpell, VscodeExtensionRecommendations } from "../src";
-import { synthSnapshot, mkdtemp } from "./util";
+import { Husky, CSpell, VscodeExtensionRecommendations } from "../../src";
+import { synthSnapshot, mkdtemp } from "../util/util";
 
 test("cSpell is added with Husky and VscodeExtensionRecommendations", () => {
   // WHEN

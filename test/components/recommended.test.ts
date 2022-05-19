@@ -1,6 +1,6 @@
 import { TypeScriptProject } from "projen/lib/typescript";
-import { Recommended } from "../src";
-import { synthSnapshot, mkdtemp } from "./util";
+import { Recommended } from "../../src";
+import { synthSnapshot, mkdtemp } from "../util/util";
 
 test("unicorn, husky, eslint-prettier-fixer, etc are added to the project", () => {
   const project = new TypeScriptProject({

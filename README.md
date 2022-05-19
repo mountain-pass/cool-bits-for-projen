@@ -102,3 +102,39 @@ project.synth();
 | **`Recommended`** | Includes all the "included in recommended" components in this table | | TypeScriptProject |  |
 | **`VscodeExtensionRecommendations`** | Manages vscode extension recommendations for your project | | Project | ✅ |
 
+## Pseudo-Components
+
+Pseudo-Components behave like components but are created *before* the project. This is needed in situations where the project options are being generated.
+
+| Pseudo-Component | Functionality | Base Project Type Required |
+| ----------- | ----------- | ----------- |
+| **`Organisational`** |  The `Organisational` pseudo-component add organisation based author data and contributors to the project | NodeProject |
+
+### Pseudo-Component Usage
+
+Pseudo-Components are constructed and then added to the project using the `addToProject()` method
+
+```ts
+import { Organisational } from "@mountainpass/cool-bits-for-projen";
+const organisational = new Organisational({
+  organisation: {
+    name: "Mountain Pass",
+    email: "info@mountain-pass.com.au",
+    url: "https://mountain-pass.com.au",
+  },
+  contributors: [
+    {
+      name: "Tom Howard",
+      email: "tom@mountain-pass.com.au",
+    },
+  ],
+});
+const project = new TypeScriptProject(
+    ...organisational.nodeProjectOptions(),
+    //...
+)
+// NOTE: The follow step is needed for Pseudo-Components, otherwise 
+// their `preSynthesize()`, `synthesize()`, and `postSynthesize()` 
+// methods will not be called
+organisational.addToProject(project);
+```

@@ -1,7 +1,7 @@
 import { Project } from "projen";
 import { TypeScriptProject } from "projen/lib/typescript";
-import { VscodeExtensionRecommendations } from "../src";
-import { synthSnapshot, mkdtemp } from "./util";
+import { VscodeExtensionRecommendations } from "../../src";
+import { synthSnapshot, mkdtemp } from "../util/util";
 
 test("recommendations are added to vanilla project", () => {
   // WHEN

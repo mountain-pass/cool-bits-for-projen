@@ -3,9 +3,25 @@ import {
   TypeScriptProject,
   TypeScriptProjectOptions,
 } from "projen/lib/typescript";
-import { Recommended } from "./src";
+import { Recommended, Organisational } from "./src";
 
 const name = "cool-bits-for-projen";
+
+const organisational = new Organisational({
+  organisation: {
+    name: "Mountain Pass",
+    email: "info@mountain-pass.com.au",
+    url: "https://mountain-pass.com.au",
+    // npmOrganisationName: "mountainpass",
+    // githubOrganisationName: "mountain-pass",
+  },
+  contributors: [
+    {
+      name: "Tom Howard",
+      email: "tom@mountain-pass.com.au",
+    },
+  ],
+});
 
 const projectOptions: TypeScriptProjectOptions = Object.assign({
   name,
@@ -31,8 +47,6 @@ const projectOptions: TypeScriptProjectOptions = Object.assign({
   repository: `https://github.com/mountain-pass/${name}.git`,
   repositoryUrl: `https://github.com/mountain-pass/${name}.git`,
   bugsUrl: `https://github.com/mountain-pass/${name}/issues`,
-  author: "Mountain Pass",
-  authorAddress: "info@mountain-pass.com.au",
   defaultReleaseBranch: "main",
   tsconfig: {
     compilerOptions: {
@@ -51,10 +65,6 @@ const projectOptions: TypeScriptProjectOptions = Object.assign({
   eslintOptions: {
     dirs: ["."],
   },
-  authorName: "Mountain Pass",
-  authorEmail: "info@mountain-pass.com.au",
-  authorOrganization: true,
-  copyrightOwner: "Mountain Pass Pty Ltd",
   dependabot: true,
   dependabotOptions: {
     labels: ["auto-approve"],
@@ -125,9 +135,12 @@ const projectOptions: TypeScriptProjectOptions = Object.assign({
   },
 });
 const project = new TypeScriptProject({
+  ...organisational.nodeProjectOptions(),
   ...projectOptions,
   ...Recommended.defaultProjectOptions,
 });
+organisational.addToProject(project);
+
 new Recommended(project, { cSpellOptions: { language: "en-GB" } });
 
 project.addGitIgnore("/docs");

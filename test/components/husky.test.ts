@@ -1,6 +1,6 @@
 import { TypeScriptProject } from "projen/lib/typescript";
-import { Husky } from "../src";
-import { synthSnapshot, mkdtemp } from "./util";
+import { Husky } from "../../src";
+import { synthSnapshot, mkdtemp } from "../util/util";
 
 test("husky is added", () => {
   // WHEN

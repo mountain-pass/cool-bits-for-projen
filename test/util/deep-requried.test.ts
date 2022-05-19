@@ -1,4 +1,4 @@
-import { DeepRequired } from "../src";
+import { DeepRequired } from "../../src";
 
 /**
  * just testing
