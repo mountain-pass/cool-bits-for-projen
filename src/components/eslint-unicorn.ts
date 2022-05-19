@@ -15,7 +15,7 @@ export type EslintUnicornOptions = {
    *
    * @default true
    */
-  eslintUnicorn: boolean;
+  eslintUnicorn?: boolean;
 };
 
 /**
