@@ -102,7 +102,7 @@ export class CSpell extends Component {
       // check spelling on commit
       dependencies?.husky?.addHook(
         "pre-commit",
-        "git diff --name-only | npx cspell lint --gitignore --show-suggestions --file-list stdin"
+        "git diff --name-only --staged | npx cspell lint --gitignore --show-suggestions --file-list stdin"
       );
 
       // adds spell checking of the commit message

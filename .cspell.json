@@ -49,8 +49,6 @@
     "cli",
     "commitlint",
     "config-conventional",
-    "npmcli",
-    "package-json",
     "types",
     "fs-extra",
     "types",

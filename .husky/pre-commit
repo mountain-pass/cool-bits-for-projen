@@ -1,3 +1,3 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-git diff --name-only | npx cspell lint --gitignore --show-suggestions --file-list stdin
+git diff --name-only --staged | npx cspell lint --gitignore --show-suggestions --file-list stdin
