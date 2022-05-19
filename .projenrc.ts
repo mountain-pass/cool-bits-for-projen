@@ -128,7 +128,7 @@ const project = new TypeScriptProject({
   ...projectOptions,
   ...Recommended.defaultProjectOptions,
 });
-new Recommended(project);
+new Recommended(project, { cSpellOptions: { language: "en-GB" } });
 
 project.addGitIgnore("/docs");
 
