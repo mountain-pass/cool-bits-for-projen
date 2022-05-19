@@ -36,7 +36,6 @@
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
-    "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.5.1",
     "@types/node": "^14",
     "@types/traverse": "^0.6.32",
@@ -51,7 +50,6 @@
     "eslint-plugin-jsdoc": "^39.2.9",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-unicorn": "^42.0.0",
-    "fs-extra": "^10.1.0",
     "husky": "^8.0.1",
     "jest": "^27",
     "jest-junit": "^13",
@@ -70,6 +68,8 @@
   "dependencies": {
     "@commitlint/types": "^16.2.1",
     "@cspell/cspell-types": "*",
+    "@types/fs-extra": "^9.0.13",
+    "fs-extra": "^10.1.0",
     "merge": "^2.1.1",
     "traverse": "^0.6.6"
   },

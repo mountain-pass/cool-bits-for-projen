@@ -7,5 +7,6 @@ export * from "./components/vscode-extension-recommendations";
 export * from "./components/eslint-jsdoc";
 export * from "./components/cspell";
 export * from "./components/organisational";
+export * from "./components/code-of-conduct";
 export * from "./util/deep-required";
 export * from "./util/pseudo-component";

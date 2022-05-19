@@ -3,7 +3,7 @@ import {
   TypeScriptProject,
   TypeScriptProjectOptions,
 } from "projen/lib/typescript";
-import { Recommended, Organisational } from "./src";
+import { Recommended, Organisational, CodeOfConduct } from "./src";
 
 const name = "cool-bits-for-projen";
 
@@ -27,9 +27,16 @@ const projectOptions: TypeScriptProjectOptions = Object.assign({
   name,
   description: "A collection of cool projen components",
   peerDeps: ["projen"],
-  deps: ["merge", "traverse", "@commitlint/types", "@cspell/cspell-types"],
+  deps: [
+    "merge",
+    "traverse",
+    "@commitlint/types",
+    "@cspell/cspell-types",
+    "fs-extra",
+    "@types/fs-extra",
+  ],
   bundledDeps: ["merge", "traverse"],
-  devDeps: ["fs-extra", "@types/fs-extra", "@types/traverse"],
+  devDeps: ["@types/traverse"],
   keywords: [
     "typescript",
     "projen",
@@ -141,7 +148,24 @@ const project = new TypeScriptProject({
 });
 organisational.addToProject(project);
 
-new Recommended(project, { cSpellOptions: { language: "en-GB" } });
+const recommended = new Recommended(project, {
+  cSpellOptions: {
+    language: "en-GB",
+    overrides: [
+      {
+        language: "en",
+        filename: "src/code-of-conduct-text/contributor-covenant-2.1.md",
+        words: ["socio-economic"],
+      },
+    ],
+  },
+});
+
+new CodeOfConduct(
+  project,
+  { contactMethod: "tom@mountain-pass.com.au" },
+  { cSpell: recommended.cSpell }
+);
 
 project.addGitIgnore("/docs");
 

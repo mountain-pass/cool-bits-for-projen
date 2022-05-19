@@ -24,6 +24,7 @@
 /.projen/files.json linguist-generated
 /.projen/tasks.json linguist-generated
 /.vscode/extensions.json linguist-generated
+/CODE_OF_CONDUCT.md linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated
 /tsconfig.dev.json linguist-generated

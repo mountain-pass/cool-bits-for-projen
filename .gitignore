@@ -52,6 +52,7 @@ junit.xml
 /dist/
 !/.eslintrc.json
 !/.commitlintrc.json
+!/CODE_OF_CONDUCT.md
 /docs
 !/.husky/pre-commit
 !/.husky/commit-msg

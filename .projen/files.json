@@ -22,6 +22,7 @@
     ".projen/files.json",
     ".projen/tasks.json",
     ".vscode/extensions.json",
+    "CODE_OF_CONDUCT.md",
     "LICENSE",
     "tsconfig.dev.json",
     "tsconfig.json"

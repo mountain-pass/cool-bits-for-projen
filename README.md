@@ -93,6 +93,7 @@ project.synth();
 
 | Component | Functionality | Uses | Base Project Type Required | Included in Recommended |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
+| **`CodeOfConduct`** | Add a [Contributor Covenant](https://www.contributor-covenant.org/) v2.1 `CODE_OF_CONDUCT.md` to your project.<br />***NOTE:** `CodeOfConduct` is not automatically included in the `Recommended` component because we believe adopting the Contributor Covenant should be a conscious deliberate decision and not something done inadvertently. We actively recommend its adoption* | | Project | |
 | **`Commitlint`** | Checks if your commit messages meet the [conventional commit format](https://conventionalcommits.org/). | [commitlint](https://github.com/conventional-changelog/commitlint) | NodeProject |  ✅ |
 | **`CSpell`** | Provides spell checking for your code and your commit messages | [cspell](https://github.com/streetsidesoftware/cspell) | NodeProject | ✅ |
 | **`EslintJsdoc`** | Provides JSDoc specific linting rules for ESLint | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc) | TypeScriptProject |  ✅ |

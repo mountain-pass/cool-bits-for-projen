@@ -9,10 +9,6 @@
       "type": "build"
     },
     {
-      "name": "@types/fs-extra",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -70,10 +66,6 @@
     {
       "name": "eslint",
       "version": "^8",
-      "type": "build"
-    },
-    {
-      "name": "fs-extra",
       "type": "build"
     },
     {
@@ -144,6 +136,14 @@
     },
     {
       "name": "@cspell/cspell-types",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/fs-extra",
+      "type": "runtime"
+    },
+    {
+      "name": "fs-extra",
       "type": "runtime"
     },
     {
