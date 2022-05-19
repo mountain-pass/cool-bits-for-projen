@@ -24,7 +24,7 @@ test("cSpell is added with Husky and VscodeExtensionRecommendations", () => {
     'npx --no -- cspell lint --show-suggestions "${1}"'
   );
   expect(husky.options.huskyHooks["pre-commit"]).toContain(
-    "npm run spellcheck"
+    "git diff --name-only | npx cspell lint --gitignore --show-suggestions --file-list stdin"
   );
   expect(snapshot["package.json"].scripts).toHaveProperty("spellcheck");
   expect(snapshot[".cspell.json"].words).toContain(
@@ -59,7 +59,7 @@ test("cSpell is not added", () => {
     'npx --no -- cspell lint --show-suggestions "${1}"'
   );
   expect(husky.options.huskyHooks["pre-commit"]).not.toContain(
-    "npm run spellcheck"
+    "git diff --name-only | npx cspell lint --gitignore --show-suggestions --file-list stdin"
   );
   expect(snapshot["package.json"].scripts).not.toHaveProperty("spellcheck");
 });
@@ -84,7 +84,7 @@ test("cSpell is added without Husky and VscodeExtensionRecommendations", () => {
     'npx --no -- cspell lint --show-suggestions "${1}"'
   );
   expect(husky.options.huskyHooks["pre-commit"]).not.toContain(
-    "npm run spellcheck"
+    "git diff --name-only | npx cspell lint --gitignore --show-suggestions --file-list stdin"
   );
   expect(snapshot["package.json"].scripts).toHaveProperty("spellcheck");
   expect(snapshot[".cspell.json"].words).not.toContain(
@@ -119,7 +119,7 @@ test("cSpell is added with Husky and VscodeExtensionRecommendations to a JsiiPro
     'npx --no -- cspell lint --show-suggestions "${1}"'
   );
   expect(husky.options.huskyHooks["pre-commit"]).toContain(
-    "npm run spellcheck"
+    "git diff --name-only | npx cspell lint --gitignore --show-suggestions --file-list stdin"
   );
   expect(snapshot["package.json"].scripts).toHaveProperty("spellcheck");
   expect(snapshot[".cspell.json"].words).toContain(

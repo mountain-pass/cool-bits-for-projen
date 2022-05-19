@@ -100,7 +100,10 @@ export class CSpell extends Component {
         steps: [{ exec: 'cspell lint --gitignore --show-suggestions "**/*"' }],
       });
       // check spelling on commit
-      dependencies?.husky?.addHook("pre-commit", "npm run spellcheck");
+      dependencies?.husky?.addHook(
+        "pre-commit",
+        "git diff --name-only | npx cspell lint --gitignore --show-suggestions --file-list stdin"
+      );
 
       // adds spell checking of the commit message
       dependencies?.husky?.addHook(
