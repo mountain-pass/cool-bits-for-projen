@@ -1,9 +1,6 @@
 import { NpmAccess } from "projen/lib/javascript";
-import {
-  TypeScriptProject,
-  TypeScriptProjectOptions,
-} from "projen/lib/typescript";
-import { Recommended, Organisational, CodeOfConduct } from "./src";
+import { TypeScriptProject } from "projen/lib/typescript";
+import { Recommended, Organisational, CodeOfConduct, GitHubber } from "./src";
 
 const name = "cool-bits-for-projen";
 
@@ -12,8 +9,6 @@ const organisational = new Organisational({
     name: "Mountain Pass",
     email: "info@mountain-pass.com.au",
     url: "https://mountain-pass.com.au",
-    // npmOrganisationName: "mountainpass",
-    // githubOrganisationName: "mountain-pass",
   },
   contributors: [
     {
@@ -23,8 +18,15 @@ const organisational = new Organisational({
   ],
 });
 
-const projectOptions: TypeScriptProjectOptions = Object.assign({
+const gitHubber = new GitHubber({
   name,
+  githubUsername: "mountain-pass",
+});
+
+const project = new TypeScriptProject({
+  ...organisational.nodeProjectOptions(),
+  ...gitHubber.nodeProjectOptions(),
+  ...Recommended.defaultProjectOptions,
   description: "A collection of cool projen components",
   peerDeps: ["projen"],
   deps: [
@@ -50,10 +52,6 @@ const projectOptions: TypeScriptProjectOptions = Object.assign({
     "vscode-extension-recommendations",
   ],
   packageName: `@mountainpass/${name}`,
-  homepage: `https://github.com/mountain-pass/${name}`,
-  repository: `https://github.com/mountain-pass/${name}.git`,
-  repositoryUrl: `https://github.com/mountain-pass/${name}.git`,
-  bugsUrl: `https://github.com/mountain-pass/${name}/issues`,
   defaultReleaseBranch: "main",
   tsconfig: {
     compilerOptions: {
@@ -75,35 +73,6 @@ const projectOptions: TypeScriptProjectOptions = Object.assign({
   dependabot: true,
   dependabotOptions: {
     labels: ["auto-approve"],
-  },
-  eslintUnicorn: true,
-  eslintJsdoc: true,
-  husky: true,
-  commitlint: true,
-  commitlintOptions: { extends: ["@commitlint/config-conventional"] },
-  cSpell: true,
-  cSpellOptions: {
-    language: "en-GB",
-    words: [
-      "commitlint",
-      "docgen",
-      "projen",
-      "projenrc",
-      "unbump",
-      "mountainpass",
-      "dbaeumer",
-      "outdir",
-      "jsii",
-    ],
-  },
-  vscodeExtensions: true,
-  vscodeExtensionsOptions: {
-    recommendations: [
-      "dbaeumer.vscode-eslint",
-      "streetsidesoftware.code-spell-checker",
-      "MarkMcCulloh.vscode-projen",
-      "adam-bender.commit-message-editor",
-    ],
   },
   jestOptions: {
     jestConfig: {
@@ -141,11 +110,6 @@ const projectOptions: TypeScriptProjectOptions = Object.assign({
     },
   },
 });
-const project = new TypeScriptProject({
-  ...organisational.nodeProjectOptions(),
-  ...projectOptions,
-  ...Recommended.defaultProjectOptions,
-});
 organisational.addToProject(project);
 
 const recommended = new Recommended(project, {
@@ -160,6 +124,9 @@ const recommended = new Recommended(project, {
     ],
   },
 });
+
+gitHubber.addToProject(project);
+gitHubber.addDependencies({ cSpell: recommended.cSpell });
 
 new CodeOfConduct(
   project,

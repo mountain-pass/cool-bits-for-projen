@@ -109,6 +109,7 @@ Pseudo-Components behave like components but are created *before* the project. T
 
 | Pseudo-Component | Functionality | Base Project Type Required |
 | ----------- | ----------- | ----------- |
+| **`GitHubber`** |  The `GitHubber` pseudo-component add github repo, issues and homepage URLs to your project | NodeProject |
 | **`Organisational`** |  The `Organisational` pseudo-component add organisation based author data and contributors to the project | NodeProject |
 
 ### Pseudo-Component Usage

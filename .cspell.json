@@ -37,6 +37,7 @@
     "p4-pre-submit",
     "post-index-change",
     "commitlint",
+    "hubber",
     "MarkMcCulloh",
     "vscode-projen",
     "dbaeumer",
