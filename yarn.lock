@@ -489,12 +489,7 @@
   resolved "https://registry.yarnpkg.com/@cspell/cspell-pipe/-/cspell-pipe-5.21.1.tgz#5e8c30d46a0251ebc18dd49770074bf5105e8206"
   integrity sha512-lld5NfLLOY6ChoU7gfbukzuOoaHhDocgj0fiNu39ayBs2Jb+7/nx6Ge0EMIa1AO51RwTS91NatWMsBxmt/hOlA==
 
-"@cspell/cspell-types@*":
-  version "5.21.0"
-  resolved "https://registry.yarnpkg.com/@cspell/cspell-types/-/cspell-types-5.21.0.tgz#69e633cd808ba3d748ca8a6f48bf63dd7ba286eb"
-  integrity sha512-B0WT5Yl3T9CI0ShzZCq3ZX57ZnVI/CcxuDBk5jnevCGW8dfQGLEmpDRuZqFwGargDEjJX2GgTPnNdXp4OHmCDg==
-
-"@cspell/cspell-types@^5.21.1":
+"@cspell/cspell-types@*", "@cspell/cspell-types@^5.21.1":
   version "5.21.1"
   resolved "https://registry.yarnpkg.com/@cspell/cspell-types/-/cspell-types-5.21.1.tgz#facb3e175a476242351fd971a628de71e9703843"
   integrity sha512-riib25imkr8+eAgzlpnAEshhYnxFuqDHprOhE2aYKjY7UBXdqD+a0ry3F21TffA+cX3ilQMyJ7P0jwHH4xn5vg==
