@@ -97,12 +97,16 @@ export class CSpell extends Component {
       // add a spell checker task
       project.addTask("spellcheck", {
         description: "check all the files for spelling errors",
-        steps: [{ exec: 'cspell lint --gitignore --show-suggestions "**/*"' }],
+        steps: [
+          {
+            exec: 'cspell lint --gitignore --dot --show-suggestions -e ".git/**" "**"',
+          },
+        ],
       });
       // check spelling on commit
       dependencies?.husky?.addHook(
         "pre-commit",
-        "git diff --name-only --staged | npx cspell lint --gitignore --show-suggestions --file-list stdin"
+        "git diff --name-only --staged | npx cspell lint --dot --gitignore --show-suggestions --no-must-find-files --file-list stdin"
       );
 
       // adds spell checking of the commit message
@@ -134,6 +138,11 @@ export class CSpell extends Component {
           .flatMap((name) => name.split("/"))
           .map((name) => name.replace(/^@/, ""))
       );
+      this.options.cSpellOptions.ignorePaths = [
+        ...(this.options.cSpellOptions.ignorePaths || []),
+        ...this.project.files.map((file) => file.path),
+        ".cspell.json",
+      ];
       this.cSpellConfigFile = new JsonFile(this.project, ".cspell.json", {
         obj: this.options.cSpellOptions,
       });

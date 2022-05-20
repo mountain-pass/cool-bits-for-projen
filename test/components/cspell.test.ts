@@ -23,9 +23,7 @@ test("cSpell is added with Husky and VscodeExtensionRecommendations", () => {
   expect(husky.options.huskyHooks["commit-msg"]).toContain(
     'npx --no -- cspell lint --show-suggestions "${1}"'
   );
-  expect(husky.options.huskyHooks["pre-commit"]).toContain(
-    "git diff --name-only --staged | npx cspell lint --gitignore --show-suggestions --file-list stdin"
-  );
+  expect(husky.options.huskyHooks["pre-commit"][0]).toMatch("cspell lint");
   expect(snapshot["package.json"].scripts).toHaveProperty("spellcheck");
   expect(snapshot[".cspell.json"].words).toContain(
     vscodeExtensionRecommendations.options.vscodeExtensionRecommendationsOptions.recommendations[0].split(
@@ -58,9 +56,7 @@ test("cSpell is not added", () => {
   expect(husky.options.huskyHooks["commit-msg"]).not.toContain(
     'npx --no -- cspell lint --show-suggestions "${1}"'
   );
-  expect(husky.options.huskyHooks["pre-commit"]).not.toContain(
-    "git diff --name-only --staged | npx cspell lint --gitignore --show-suggestions --file-list stdin"
-  );
+  expect(husky.options.huskyHooks["pre-commit"]).toHaveLength(0);
   expect(snapshot["package.json"].scripts).not.toHaveProperty("spellcheck");
 });
 
@@ -83,9 +79,7 @@ test("cSpell is added without Husky and VscodeExtensionRecommendations", () => {
   expect(husky.options.huskyHooks["commit-msg"]).not.toContain(
     'npx --no -- cspell lint --show-suggestions "${1}"'
   );
-  expect(husky.options.huskyHooks["pre-commit"]).not.toContain(
-    "git diff --name-only --staged | npx cspell lint --gitignore --show-suggestions --file-list stdin"
-  );
+  expect(husky.options.huskyHooks["pre-commit"]).toHaveLength(0);
   expect(snapshot["package.json"].scripts).toHaveProperty("spellcheck");
   expect(snapshot[".cspell.json"].words).not.toContain(
     vscodeExtensionRecommendations.options.vscodeExtensionRecommendationsOptions.recommendations[0].split(
@@ -118,9 +112,7 @@ test("cSpell is added with Husky and VscodeExtensionRecommendations to a JsiiPro
   expect(husky.options.huskyHooks["commit-msg"]).toContain(
     'npx --no -- cspell lint --show-suggestions "${1}"'
   );
-  expect(husky.options.huskyHooks["pre-commit"]).toContain(
-    "git diff --name-only --staged | npx cspell lint --gitignore --show-suggestions --file-list stdin"
-  );
+  expect(husky.options.huskyHooks["pre-commit"][0]).toMatch("cspell lint");
   expect(snapshot["package.json"].scripts).toHaveProperty("spellcheck");
   expect(snapshot[".cspell.json"].words).toContain(
     vscodeExtensionRecommendations.options.vscodeExtensionRecommendationsOptions.recommendations[0].split(
