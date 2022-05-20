@@ -73,10 +73,6 @@
     "merge": "^2.1.1",
     "traverse": "^0.6.6"
   },
-  "bundledDependencies": [
-    "merge",
-    "traverse"
-  ],
   "keywords": [
     "cspell",
     "eslint-jsdoc",

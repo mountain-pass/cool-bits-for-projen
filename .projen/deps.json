@@ -119,14 +119,6 @@
       "type": "build"
     },
     {
-      "name": "merge",
-      "type": "bundled"
-    },
-    {
-      "name": "traverse",
-      "type": "bundled"
-    },
-    {
       "name": "projen",
       "type": "peer"
     },

@@ -1,8 +1,22 @@
 import { NpmAccess } from "projen/lib/javascript";
 import { TypeScriptProject } from "projen/lib/typescript";
-import { Recommended, Organisational, CodeOfConduct, GitHubber } from "./src";
+import {
+  Recommended,
+  Organisational,
+  CodeOfConduct,
+  GitHubber,
+  NpmReleaser,
+} from "./src";
 
-const name = "cool-bits-for-projen";
+const gitHubber = new GitHubber({
+  name: "cool-bits-for-projen",
+  username: "mountain-pass",
+});
+
+const npmReleaser = new NpmReleaser(gitHubber, {
+  scope: "mountainpass",
+  access: NpmAccess.PUBLIC,
+});
 
 const organisational = new Organisational({
   organisation: {
@@ -18,14 +32,10 @@ const organisational = new Organisational({
   ],
 });
 
-const gitHubber = new GitHubber({
-  name,
-  githubUsername: "mountain-pass",
-});
-
 const project = new TypeScriptProject({
-  ...organisational.nodeProjectOptions(),
   ...gitHubber.nodeProjectOptions(),
+  ...organisational.nodeProjectOptions(),
+  ...npmReleaser.nodeProjectOptions(),
   ...Recommended.defaultProjectOptions,
   description: "A collection of cool projen components",
   peerDeps: ["projen"],
@@ -37,7 +47,6 @@ const project = new TypeScriptProject({
     "fs-extra",
     "@types/fs-extra",
   ],
-  bundledDeps: ["merge", "traverse"],
   devDeps: ["@types/traverse"],
   keywords: [
     "typescript",
@@ -51,7 +60,6 @@ const project = new TypeScriptProject({
     "husky",
     "vscode-extension-recommendations",
   ],
-  packageName: `@mountainpass/${name}`,
   defaultReleaseBranch: "main",
   tsconfig: {
     compilerOptions: {
@@ -59,14 +67,9 @@ const project = new TypeScriptProject({
     },
   },
   projenrcTs: true,
-  npmDistTag: "latest",
-  npmAccess: NpmAccess.PUBLIC,
-  releaseToNpm: true,
   license: "Apache-2.0",
   codeCov: true,
-  prettier: true,
   docgen: true,
-  eslint: true,
   eslintOptions: {
     dirs: ["."],
   },
@@ -127,6 +130,7 @@ const recommended = new Recommended(project, {
 
 gitHubber.addToProject(project);
 gitHubber.addDependencies({ cSpell: recommended.cSpell });
+npmReleaser.addToProject(project);
 
 new CodeOfConduct(
   project,

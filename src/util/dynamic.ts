@@ -45,9 +45,9 @@ function innerResolve<Type, Argument>(
  */
 export function resolve<Type, Argument, DefaultType>(
   argument: Argument,
-  dynamicValue: Dynamic<Type, Argument> | undefined,
-  defaultValue: Dynamic<DefaultType, Argument>
-): DefaultType {
+  dynamicValue: Dynamic<Type, Argument> | Type | undefined,
+  defaultValue: Dynamic<DefaultType, Argument> | DefaultType
+): DefaultType & Type {
   const resolvedValue = innerResolve(argument, dynamicValue);
   const resolvedDefaultValue = innerResolve(argument, defaultValue);
   return merge.recursive(resolvedDefaultValue, resolvedValue);

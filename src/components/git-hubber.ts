@@ -7,8 +7,17 @@ import { CSpell } from "./cspell";
  * GitHubber options
  */
 export type GitHubberOptions = {
+  /**
+   * The name of the project.
+   */
   name: string;
-  githubUsername: string;
+  /**
+   * The github name of the user or organisation this project belongs to
+   */
+  username: string;
+  /**
+   * The homepage of the project. Defaults to the GitHub project page.
+   */
   homepage?: string;
 };
 /**
@@ -28,7 +37,7 @@ export class GitHubber extends PseudoComponent<NodeProject> {
       ...options,
       homepage:
         options.homepage ||
-        `https://github.com/${options.githubUsername}/${options.name}`,
+        `https://github.com/${options.username}/${options.name}`,
     };
   }
 
@@ -49,14 +58,13 @@ export class GitHubber extends PseudoComponent<NodeProject> {
    *
    * @returns the options
    */
-  nodeProjectOptions(): Pick<
-    NodeProjectOptions,
-    "repository" | "homepage" | "bugsUrl" | "name"
+  nodeProjectOptions(): Required<
+    Pick<NodeProjectOptions, "repository" | "homepage" | "bugsUrl" | "name">
   > {
     return {
       homepage: this.options.homepage,
-      repository: `https://github.com/${this.options.githubUsername}/${this.options.name}.git`,
-      bugsUrl: `https://github.com/${this.options.githubUsername}/${this.options.name}/issues`,
+      repository: `https://github.com/${this.options.username}/${this.options.name}.git`,
+      bugsUrl: `https://github.com/${this.options.username}/${this.options.name}/issues`,
       name: this.options.name,
     };
   }
@@ -66,16 +74,15 @@ export class GitHubber extends PseudoComponent<NodeProject> {
    *
    * @returns the options
    */
-  jsiiProjectOptions(): Pick<
-    JsiiProjectOptions,
-    "repositoryUrl" | "repository" | "homepage" | "bugsUrl" | "name"
+  jsiiProjectOptions(): Required<
+    Pick<
+      JsiiProjectOptions,
+      "repositoryUrl" | "repository" | "homepage" | "bugsUrl" | "name"
+    >
   > {
     return {
-      homepage: this.options.homepage,
-      repository: `https://github.com/${this.options.githubUsername}/${this.options.name}.git`,
-      repositoryUrl: `https://github.com/${this.options.githubUsername}/${this.options.name}.git`,
-      bugsUrl: `https://github.com/${this.options.githubUsername}/${this.options.name}/issues`,
-      name: this.options.name,
+      ...this.nodeProjectOptions(),
+      repositoryUrl: `https://github.com/${this.options.username}/${this.options.name}.git`,
     };
   }
 }

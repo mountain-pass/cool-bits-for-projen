@@ -80,8 +80,6 @@
     "ts-node",
     "typedoc",
     "typescript",
-    "merge",
-    "traverse",
     "projen",
     "commitlint",
     "types",

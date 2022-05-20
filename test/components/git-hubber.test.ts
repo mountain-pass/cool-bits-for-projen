@@ -1,4 +1,3 @@
-//import { JsiiProject } from "projen/lib/cdk";
 import { JsiiProject } from "projen/lib/cdk";
 import { NodeProject } from "projen/lib/javascript";
 import { CSpell, GitHubber } from "../../src";
@@ -7,12 +6,11 @@ import { synthSnapshot, mkdtemp } from "../util/util";
 test("without homepage", () => {
   const gitHubber = new GitHubber({
     name: "test-project",
-    githubUsername: "test-org",
+    username: "test-org",
   });
   const project = new NodeProject({
     ...gitHubber.nodeProjectOptions(),
     outdir: mkdtemp(),
-    name: "test-project",
     defaultReleaseBranch: "main",
   });
   gitHubber.addToProject(project);
@@ -32,13 +30,12 @@ test("without homepage", () => {
 test("with homepage", () => {
   const gitHubber = new GitHubber({
     name: "test-project",
-    githubUsername: "test-org",
+    username: "test-org",
     homepage: "https://test.com",
   });
   const project = new NodeProject({
     ...gitHubber.nodeProjectOptions(),
     outdir: mkdtemp(),
-    name: "test-project",
     defaultReleaseBranch: "main",
   });
   gitHubber.addToProject(project);
@@ -56,13 +53,12 @@ test("with homepage", () => {
 test("jsii project gitHubber", () => {
   const gitHubber = new GitHubber({
     name: "test-project",
-    githubUsername: "test-org",
+    username: "test-org",
     homepage: "https://test.com",
   });
   const project = new JsiiProject({
     ...gitHubber.jsiiProjectOptions(),
     outdir: mkdtemp(),
-    name: "test-project",
     defaultReleaseBranch: "main",
     author: "test-org",
     authorAddress: "test@test.com",
@@ -81,13 +77,12 @@ test("jsii project gitHubber", () => {
 test("with cSpell", () => {
   const gitHubber = new GitHubber({
     name: "test-project",
-    githubUsername: "test-org",
+    username: "test-org",
     homepage: "https://test.com",
   });
   const project = new NodeProject({
     ...gitHubber.nodeProjectOptions(),
     outdir: mkdtemp(),
-    name: "test-project",
     defaultReleaseBranch: "main",
   });
   gitHubber.addToProject(project);
