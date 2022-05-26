@@ -193,6 +193,9 @@
       "description": "Run tests",
       "steps": [
         {
+          "exec": "git shortlog --summary --email HEAD | cat"
+        },
+        {
           "exec": "jest --passWithNoTests --all --updateSnapshot"
         },
         {
