@@ -46,7 +46,7 @@ export class Contributors extends Component {
         ...this.options.additionalContributors,
         ...authors.stdout.split("\n"),
       ]);
-      if (process.env.CI) {
+      if (process.env.CI === undefined || !process.env.CI) {
         this.contributors.add(
           `${child_process
             .execSync("git config user.name")
