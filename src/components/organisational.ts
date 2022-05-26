@@ -16,9 +16,6 @@ export type Entity = {
  */
 export type OrganisationalOptions = {
   organisation: Entity;
-  // npmOrganisationName?: string;
-  // githubOrganisationName?: string;
-  contributors?: (string | Entity)[];
 };
 /**
  * The `Organisational` pseudo-component add organisation based author data to
@@ -33,7 +30,7 @@ export class Organisational extends PseudoComponent<NodeProject> {
    */
   constructor(options: OrganisationalOptions) {
     super();
-    this.options = { contributors: [], ...options };
+    this.options = options;
   }
 
   /**
@@ -70,25 +67,5 @@ export class Organisational extends PseudoComponent<NodeProject> {
       author: this.options.organisation.name,
       authorAddress: this.options.organisation.email,
     };
-  }
-
-  /**
-   * adds the contributors to the package.json file.
-   *
-   * @param project the project to add the contributors to
-   */
-  preSynthesize(project: NodeProject): void {
-    if (this.options.contributors.length > 0) {
-      project.package.addField("contributors", this.options.contributors);
-    }
-  }
-
-  /**
-   * adds contributors to the project
-   *
-   * @param {...any} contributors the contributors to add
-   */
-  addContributors(...contributors: (string | Entity)[]): void {
-    this.options.contributors.push(...contributors);
   }
 }

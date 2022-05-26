@@ -95,6 +95,7 @@ project.synth();
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | **`CodeOfConduct`** | Add a [Contributor Covenant](https://www.contributor-covenant.org/) v2.1 `CODE_OF_CONDUCT.md` to your project.<br />***NOTE:** `CodeOfConduct` is not automatically included in the `Recommended` component because we believe adopting the Contributor Covenant should be a conscious deliberate decision and not something done inadvertently. We actively recommend its adoption* | | Project | |
 | **`Commitlint`** | Checks if your commit messages meet the [conventional commit format](https://conventionalcommits.org/). | [commitlint](https://github.com/conventional-changelog/commitlint) | NodeProject |  ✅ |
+| **`Contributors`** | Adds github authors to the project's contributors list | [shelljs-plugin-authors](https://github.com/tanem/shelljs-plugin-authors) | NodeProject | ✅ |
 | **`CSpell`** | Provides spell checking for your code and your commit messages | [cspell](https://github.com/streetsidesoftware/cspell) | NodeProject | ✅ |
 | **`EslintJsdoc`** | Provides JSDoc specific linting rules for ESLint | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc) | TypeScriptProject |  ✅ |
 | **`EslintPrettierFixer`** | Ensures `prettier` is the last entry in your eslint `extends` section, which is needed for prettier to work correctly with eslint | | TypeScriptProject | ✅ |
@@ -111,7 +112,7 @@ Pseudo-Components behave like components but are created *before* the project. T
 | ----------- | ----------- | ----------- |
 | **`GitHubber`** |  The `GitHubber` pseudo-component add github repo, issues and homepage URLs to your project | NodeProject |
 | **`NpmReleaser`** |  The `NpmReleaser` pseudo-component add npm release data to the project | NodeProject |
-| **`Organisational`** |  The `Organisational` pseudo-component add organisation based author data and contributors to the project | NodeProject |
+| **`Organisational`** |  The `Organisational` pseudo-component add organisation based author data to the project | NodeProject |
 
 ### Pseudo-Component Usage
 
@@ -124,13 +125,7 @@ const organisational = new Organisational({
     name: "Mountain Pass",
     email: "info@mountain-pass.com.au",
     url: "https://mountain-pass.com.au",
-  },
-  contributors: [
-    {
-      name: "Tom Howard",
-      email: "tom@mountain-pass.com.au",
-    },
-  ],
+  }
 });
 const project = new TypeScriptProject(
     ...organisational.nodeProjectOptions(),

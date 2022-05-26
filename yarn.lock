@@ -1099,6 +1099,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/glob@*":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.2.0.tgz#bc1b5bf3aa92f25bd5dd39f35c57361bdce5b2eb"
+  integrity sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==
+  dependencies:
+    "@types/minimatch" "*"
+    "@types/node" "*"
+
 "@types/graceful-fs@^4.1.2":
   version "4.1.5"
   resolved "https://registry.npmjs.org/@types/graceful-fs/-/graceful-fs-4.1.5.tgz"
@@ -1143,6 +1151,11 @@
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/minimatch@*":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.5.tgz#1001cc5e6a3704b83c236027e77f2f58ea010f40"
+  integrity sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==
+
 "@types/minimist@^1.2.0":
   version "1.2.2"
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.2.tgz"
@@ -1177,6 +1190,14 @@
   version "2.6.0"
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.6.0.tgz"
   integrity sha512-G/AdOadiZhnJp0jXCaBQU449W2h716OW/EoXeYkCytxKL06X1WCXB4DZpp8TpZ8eyIJVS1cw4lrlkkSYU21cDw==
+
+"@types/shelljs@^0.8.11":
+  version "0.8.11"
+  resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.8.11.tgz#17a5696c825974e96828e96e89585d685646fcb8"
+  integrity sha512-x9yaMvEh5BEaZKeVQC4vp3l+QoFj3BXcd4aYfuKSzIIyihjdVARAadYy3SMNIz0WCCdS2vB9JL/U6GQk5PaxQw==
+  dependencies:
+    "@types/glob" "*"
+    "@types/node" "*"
 
 "@types/stack-utils@^2.0.0":
   version "2.0.1"
@@ -4716,9 +4737,24 @@ shebang-regex@^3.0.0:
   resolved "https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
+shelljs-exec-proxy@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/shelljs-exec-proxy/-/shelljs-exec-proxy-0.2.1.tgz#7259ea5210a78dd8cdb4ea07d4e48df7efda3855"
+  integrity sha512-C4F2xP81pbW8DuWAbzhUb1jg6OS5oeD/THPKJfv5ecXv94lIgSconScCwjeLFSuDFrmvzqYVTnnf8IGzWNRclg==
+  dependencies:
+    shelljs "^0.8.5"
+
+shelljs-plugin-authors@^2.0.105:
+  version "2.0.105"
+  resolved "https://registry.yarnpkg.com/shelljs-plugin-authors/-/shelljs-plugin-authors-2.0.105.tgz#f2d8b38d8e48db241db1938daf176e071c01bbdb"
+  integrity sha512-1yVk8ngtIXFV1hsVDlB+FGUE9dq/OmfolEliNa5QvbhMyHvLIW6CjF9VTvaJP/T4acX7F5eqZFOjFoJeX4MODg==
+  dependencies:
+    commander "^9.2.0"
+    shelljs-exec-proxy "^0.2.1"
+
 shelljs@^0.8.5:
   version "0.8.5"
-  resolved "https://registry.npmjs.org/shelljs/-/shelljs-0.8.5.tgz"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.5.tgz#de055408d8361bed66c669d2f000538ced8ee20c"
   integrity sha512-TiwcRcrkhHvbrZbnRcFYMLl30Dfov3HKqzp5tO5b4pt6G/SezKcYhmDg15zXVBswHmctSAQKznqNW2LO5tTDow==
   dependencies:
     glob "^7.0.0"

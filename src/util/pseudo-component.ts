@@ -73,5 +73,13 @@ export abstract class PseudoComponent<ProjectType extends Project> {
    */
   addToProject(project: ProjectType) {
     new PseudoComponentHelper(project, this);
+    this.postAddToProject(project);
   }
+
+  /**
+   * called after the pseudo-component is added to the project
+   *
+   * @param _project the project to apply to
+   */
+  postAddToProject(_project: ProjectType) {}
 }

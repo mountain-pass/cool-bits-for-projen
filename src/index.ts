@@ -10,5 +10,6 @@ export * from "./components/organisational";
 export * from "./components/code-of-conduct";
 export * from "./components/git-hubber";
 export * from "./components/npm-releaser";
+export * from "./components/contributors";
 export * from "./util/deep-required";
 export * from "./util/pseudo-component";

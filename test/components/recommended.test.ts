@@ -29,6 +29,7 @@ test("unicorn, husky, eslint-prettier-fixer, etc are added to the project", () =
     "eslint-plugin-jsdoc"
   );
   expect(snapshot["package.json"].devDependencies).toHaveProperty("cspell");
+  expect(snapshot["package.json"].contributors).not.toBeUndefined();
 });
 
 test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
@@ -46,6 +47,7 @@ test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
     vscodeExtensionRecommendations: false,
     eslintJsdoc: false,
     cSpell: false,
+    contributors: false,
   });
   project.eslint?.addExtends("NotPrettier");
   const snapshot = synthSnapshot(project);
@@ -67,4 +69,5 @@ test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
     "eslint-plugin-jsdoc"
   );
   expect(snapshot["package.json"].devDependencies).not.toHaveProperty("cspell");
+  expect(snapshot["package.json"].contributors).toBeUndefined();
 });

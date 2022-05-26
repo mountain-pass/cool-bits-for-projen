@@ -4,6 +4,7 @@ import { TypeScriptProject } from "projen/lib/typescript";
 import { CSpellOptions } from "..";
 import { Dynamic } from "../util/dynamic";
 import { Commitlint, CommitlintOptions } from "./commitlint";
+import { Contributors, ContributorsOptions } from "./contributors";
 import { CSpell } from "./cspell";
 import { EslintJsdoc, EslintJsdocOptions } from "./eslint-jsdoc";
 import {
@@ -29,7 +30,8 @@ export type RecommendedOptions = Dynamic<
   Dynamic<CommitlintOptions, NodeProject> &
   Dynamic<VscodeExtensionRecommendationsOptions, Project> &
   Dynamic<EslintJsdocOptions, TypeScriptProject> &
-  Dynamic<CSpellOptions, NodeProject>;
+  Dynamic<CSpellOptions, NodeProject> &
+  Dynamic<ContributorsOptions, NodeProject>;
 
 export const defaultRecommendedOptions: RecommendedOptions = {
   ...EslintPrettierFixer.defaultOptions,
@@ -39,6 +41,7 @@ export const defaultRecommendedOptions: RecommendedOptions = {
   ...VscodeExtensionRecommendations.defaultOptions,
   ...EslintJsdoc.defaultOptions,
   ...CSpell.defaultOptions,
+  ...Contributors.defaultOptions,
 };
 
 /**
@@ -57,6 +60,7 @@ export class Recommended extends Component {
   vscodeExtensionRecommendations: VscodeExtensionRecommendations;
   eslintJsdoc: EslintJsdoc;
   cSpell: CSpell;
+  contributors: Contributors;
   /**
    * adds MountainPass recommended settings to the project
    *
@@ -82,5 +86,6 @@ export class Recommended extends Component {
       cSpell: this.cSpell,
     });
     this.eslintJsdoc = new EslintJsdoc(project, options);
+    this.contributors = new Contributors(project, options);
   }
 }

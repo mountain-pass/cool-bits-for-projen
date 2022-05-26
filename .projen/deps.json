@@ -18,6 +18,10 @@
       "type": "build"
     },
     {
+      "name": "@types/shelljs",
+      "type": "build"
+    },
+    {
       "name": "@types/traverse",
       "type": "build"
     },
@@ -140,6 +144,14 @@
     },
     {
       "name": "merge",
+      "type": "runtime"
+    },
+    {
+      "name": "shelljs",
+      "type": "runtime"
+    },
+    {
+      "name": "shelljs-plugin-authors",
       "type": "runtime"
     },
     {

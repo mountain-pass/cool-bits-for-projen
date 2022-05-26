@@ -24,12 +24,6 @@ const organisational = new Organisational({
     email: "info@mountain-pass.com.au",
     url: "https://mountain-pass.com.au",
   },
-  contributors: [
-    {
-      name: "Tom Howard",
-      email: "tom@mountain-pass.com.au",
-    },
-  ],
 });
 
 const project = new TypeScriptProject({
@@ -46,8 +40,10 @@ const project = new TypeScriptProject({
     "@cspell/cspell-types",
     "fs-extra",
     "@types/fs-extra",
+    "shelljs",
+    "shelljs-plugin-authors",
   ],
-  devDeps: ["@types/traverse"],
+  devDeps: ["@types/traverse", "@types/shelljs"],
   keywords: [
     "typescript",
     "projen",

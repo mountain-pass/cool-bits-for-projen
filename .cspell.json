@@ -55,6 +55,8 @@
     "types",
     "node",
     "types",
+    "shelljs",
+    "types",
     "traverse",
     "typescript-eslint",
     "eslint-plugin",
@@ -89,6 +91,8 @@
     "fs-extra",
     "fs-extra",
     "merge",
+    "shelljs",
+    "shelljs-plugin-authors",
     "traverse"
   ],
   "dictionaryDefinitions": [
