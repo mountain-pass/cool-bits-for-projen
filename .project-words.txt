@@ -4,3 +4,4 @@ Jsii
 outdir
 prettierignore
 shortlog
+unshallow

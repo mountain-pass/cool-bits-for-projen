@@ -1,4 +1,6 @@
 import child_process from "child_process";
+// import path from "path";
+// import fs from "fs-extra";
 import { Component } from "projen";
 import { NodeProject } from "projen/lib/javascript";
 import shell from "shelljs";
@@ -40,9 +42,14 @@ export class Contributors extends Component {
     super(project);
     this.nodeProject = project;
     this.options = resolve(project, options, Contributors.defaultOptions);
+    this.contributors = new Set<string | Entity>();
     if (this.options.autoPopulateFromGit) {
+      // If we don't have the full depth and cannot
+      // get the full author list, so convert to full depth
+      child_process.execSync(
+        "if [ $(git rev-parse --is-shallow-repository) = true ];then git fetch --unshallow; fi"
+      );
       const authors = (shell as any).authors();
-      console.log({ authors: authors.stdout.split("\n") });
       this.contributors = new Set<string | Entity>([
         ...this.options.additionalContributors,
         ...authors.stdout.split("\n"),
@@ -71,8 +78,6 @@ export class Contributors extends Component {
    */
   preSynthesize(): void {
     if (this.options.contributors && this.contributors.size > 0) {
-      console.log({ contributors: this.contributors });
-      console.log({ contributors: [...this.contributors] });
       this.nodeProject.package.addField("contributors", [...this.contributors]);
     }
   }
