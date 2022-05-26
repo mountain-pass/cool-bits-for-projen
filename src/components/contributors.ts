@@ -46,6 +46,7 @@ export class Contributors extends Component {
         ...this.options.additionalContributors,
         ...authors.stdout.split("\n"),
       ]);
+      /* istanbul ignore next */
       if (process.env.CI === undefined || !process.env.CI) {
         this.contributors.add(
           `${child_process
