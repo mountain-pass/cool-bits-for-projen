@@ -3,3 +3,4 @@ commitlintrc
 Jsii
 outdir
 prettierignore
+shortlog

@@ -141,4 +141,6 @@ new CodeOfConduct(
 
 project.addGitIgnore("/docs");
 
+project.testTask.prependExec("git shortlog --summary --email HEAD | cat");
+
 project.synth();
