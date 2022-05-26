@@ -42,6 +42,7 @@ export class Contributors extends Component {
     this.options = resolve(project, options, Contributors.defaultOptions);
     if (this.options.autoPopulateFromGit) {
       const authors = (shell as any).authors();
+      console.log({ authors: authors.stdout.split("\n") });
       this.contributors = new Set<string | Entity>([
         ...this.options.additionalContributors,
         ...authors.stdout.split("\n"),
@@ -70,6 +71,8 @@ export class Contributors extends Component {
    */
   preSynthesize(): void {
     if (this.options.contributors && this.contributors.size > 0) {
+      console.log({ contributors: this.contributors });
+      console.log({ contributors: [...this.contributors] });
       this.nodeProject.package.addField("contributors", [...this.contributors]);
     }
   }
