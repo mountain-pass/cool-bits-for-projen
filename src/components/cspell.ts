@@ -95,7 +95,7 @@ export class CSpell extends Component {
     if (this.options.cSpell) {
       project.addDevDeps("cspell");
       // add a spell checker task
-      project.addTask("spellcheck", {
+      const spellCheckTask = project.addTask("spellcheck", {
         description: "check all the files for spelling errors",
         steps: [
           {
@@ -103,6 +103,7 @@ export class CSpell extends Component {
           },
         ],
       });
+      project.testTask.spawn(spellCheckTask);
       // check spelling on commit
       dependencies?.husky?.addHook(
         "pre-commit",

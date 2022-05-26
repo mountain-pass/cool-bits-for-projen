@@ -197,6 +197,9 @@
         },
         {
           "spawn": "eslint"
+        },
+        {
+          "spawn": "spellcheck"
         }
       ]
     },
