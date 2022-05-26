@@ -46,15 +46,17 @@ export class Contributors extends Component {
         ...this.options.additionalContributors,
         ...authors.stdout.split("\n"),
       ]);
-      this.contributors.add(
-        `${child_process
-          .execSync("git config user.name")
-          .toString()
-          .trim()} <${child_process
-          .execSync("git config user.email")
-          .toString()
-          .trim()}>`
-      );
+      if (process.env.CI) {
+        this.contributors.add(
+          `${child_process
+            .execSync("git config user.name")
+            .toString()
+            .trim()} <${child_process
+            .execSync("git config user.email")
+            .toString()
+            .trim()}>`
+        );
+      }
     } else {
       this.contributors = new Set<string | Entity>(
         this.options.additionalContributors

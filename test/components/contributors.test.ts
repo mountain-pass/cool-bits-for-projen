@@ -45,7 +45,7 @@ test("contributors with config", () => {
   );
 });
 
-test("contributors  added", () => {
+test("contributors added", () => {
   // WHEN
   const project = new NodeProject({
     outdir: mkdtemp(),
@@ -59,4 +59,22 @@ test("contributors  added", () => {
   expect(snapshot["package.json"].contributors).toContain(
     "Seymour Butz <Seymour@Butz.com>"
   );
+});
+
+test("contributors and CI", () => {
+  const old = process.env.CI;
+  process.env.CI = "1";
+  const project = new NodeProject({
+    outdir: mkdtemp(),
+    name: "test-project",
+    defaultReleaseBranch: "main",
+  });
+  const contributors = new Contributors(project);
+  contributors.addContributors("Seymour Butz <Seymour@Butz.com>");
+  const snapshot = synthSnapshot(project);
+
+  expect(snapshot["package.json"].contributors).toContain(
+    "Seymour Butz <Seymour@Butz.com>"
+  );
+  process.env.CI = old;
 });
