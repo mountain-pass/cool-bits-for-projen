@@ -130,15 +130,17 @@ export class CSpell extends Component {
    */
   preSynthesize(): void {
     if (this.options.cSpell) {
-      this.options.cSpellOptions.words.push(
+      const words = new Set<string>([
         ...(this.dependencies?.vscodeExtensionRecommendations
           ?.getRecommendations()
           .flatMap((recommendation) => recommendation.split(".")) || []),
         ...this.project.deps.all
           .map((dep) => dep.name)
           .flatMap((name) => name.split("/"))
-          .map((name) => name.replace(/^@/, ""))
-      );
+          .map((name) => name.replace(/^@/, "")),
+        ...this.options.cSpellOptions.words,
+      ]);
+      this.options.cSpellOptions.words = [...words];
       this.options.cSpellOptions.ignorePaths = [
         ...(this.options.cSpellOptions.ignorePaths || []),
         ...this.project.files.map((file) => file.path),
