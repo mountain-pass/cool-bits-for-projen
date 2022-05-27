@@ -110,12 +110,10 @@
     },
     {
       "name": "ts-node",
-      "version": "^9",
       "type": "build"
     },
     {
       "name": "typedoc",
-      "version": "^0.21.4",
       "type": "build"
     },
     {
