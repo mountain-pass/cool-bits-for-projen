@@ -59,12 +59,12 @@
     "projen": "^0.56.5",
     "standard-version": "^9",
     "ts-jest": "^27",
-    "ts-node": "^9",
-    "typedoc": "^0.21.4",
+    "ts-node": "^10.8.0",
+    "typedoc": "*",
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
-    "projen": "^0.56.8"
+    "projen": "^0.56.35"
   },
   "dependencies": {
     "@commitlint/types": "^16.2.1",
