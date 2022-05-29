@@ -32,7 +32,7 @@ export class CodeOfConduct extends FileBase {
     dependencies?: { cSpell: CSpell }
   ) {
     super(project, "CODE_OF_CONDUCT.md", options);
-    const textFile = `${__dirname}/../code-of-conduct-text/contributor-covenant-2.1.md`;
+    const textFile = `${__dirname}/../../code-of-conduct-text/contributor-covenant-2.1.md`;
     // if (!fs.existsSync(textFile)) {
     //   throw new Error(`unsupported code of conduct contributor-covenant-2.1`);
     // }

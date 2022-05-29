@@ -123,7 +123,7 @@ const recommended = new Recommended(project, {
     overrides: [
       {
         language: "en",
-        filename: "src/code-of-conduct-text/contributor-covenant-2.1.md",
+        filename: "code-of-conduct-text/contributor-covenant-2.1.md",
         words: ["socio-economic"],
       },
     ],
