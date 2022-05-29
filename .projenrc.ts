@@ -16,6 +16,7 @@ const gitHubber = new GitHubber({
 const npmReleaser = new NpmReleaser(gitHubber, {
   scope: "mountainpass",
   access: NpmAccess.PUBLIC,
+  release: true,
 });
 
 const organisational = new Organisational({
