@@ -490,9 +490,9 @@
   integrity sha512-oehpfj8tOoFep34uOCABdpsqisg37Htc+DjOu5pT1gtzozReSdahD5dQUKAp/ND/tttdE4SWQUMUVZq6cxvTvw==
 
 "@cspell/cspell-types@*", "@cspell/cspell-types@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@cspell/cspell-types/-/cspell-types-6.0.0.tgz#a65aea274438cdbba0c0ef24ba52cd80cd89be9a"
-  integrity sha512-N8wGQU+n64s3cIMC/5WJzo6UT/Jetxz6oSdOr0SksCHO84I6QR1ORwsXM3ej7x6490uoTM+cf11CSYrw6ma+bg==
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@cspell/cspell-types/-/cspell-types-6.1.0.tgz#308a4e07ec9c7b3e40be54b107eb6fbe7be6468f"
+  integrity sha512-s6eoQqJpgsEEeYHBqgGX5NqchDk2F9zGRjZcJSuqV23go4WCKxUeDpkiewpMK0Q5P+8ZD4IOB46sOXzQzPVPaQ==
 
 "@cspell/dict-ada@^2.0.0":
   version "2.0.0"
