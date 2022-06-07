@@ -74,6 +74,7 @@ test("jsii project gitHubber", () => {
   );
   expect(snapshot["package.json"].homepage).toEqual("https://test.com");
 });
+
 test("with cSpell", () => {
   const gitHubber = new GitHubber({
     name: "test-project",
@@ -85,8 +86,8 @@ test("with cSpell", () => {
     outdir: mkdtemp(),
     defaultReleaseBranch: "main",
   });
+  new CSpell(project);
   gitHubber.addToProject(project);
-  gitHubber.addDependencies({ cSpell: new CSpell(project) });
   const snapshot = synthSnapshot(project);
 
   expect(snapshot["package.json"].repository.url).toEqual(

@@ -33,17 +33,6 @@ export type RecommendedOptions = Dynamic<
   Dynamic<CSpellOptions, NodeProject> &
   Dynamic<ContributorsOptions, NodeProject>;
 
-export const defaultRecommendedOptions: RecommendedOptions = {
-  ...EslintPrettierFixer.defaultOptions,
-  ...EslintUnicorn.defaultOptions,
-  ...Husky.defaultOptions,
-  ...Commitlint.defaultOptions,
-  ...VscodeExtensionRecommendations.defaultOptions,
-  ...EslintJsdoc.defaultOptions,
-  ...CSpell.defaultOptions,
-  ...Contributors.defaultOptions,
-};
-
 /**
  * adds MountainPass recommended settings to the project
  */
@@ -52,6 +41,16 @@ export class Recommended extends Component {
     ...EslintPrettierFixer.defaultProjectOptions,
     ...EslintUnicorn.defaultProjectOptions,
     ...EslintJsdoc.defaultProjectOptions,
+  };
+  static defaultOptions: RecommendedOptions = {
+    ...EslintPrettierFixer.defaultOptions,
+    ...EslintUnicorn.defaultOptions,
+    ...Husky.defaultOptions,
+    ...Commitlint.defaultOptions,
+    ...VscodeExtensionRecommendations.defaultOptions,
+    ...EslintJsdoc.defaultOptions,
+    ...CSpell.defaultOptions,
+    ...Contributors.defaultOptions,
   };
   eslintPrettier: EslintPrettierFixer;
   eslintUnicorn: EslintUnicorn;
@@ -69,23 +68,23 @@ export class Recommended extends Component {
    */
   constructor(project: TypeScriptProject, options?: RecommendedOptions) {
     super(project);
+    this.cSpell = new CSpell(project, options);
+    this.commitlint = new Commitlint(project, options);
     this.eslintPrettier = new EslintPrettierFixer(project, options);
     this.eslintUnicorn = new EslintUnicorn(project, options);
-    this.husky = new Husky(project, options);
+    this.eslintJsdoc = new EslintJsdoc(project, options);
+    this.contributors = new Contributors(project, options);
     this.vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
       project,
       options
     );
-    this.cSpell = new CSpell(project, options, {
-      husky: this.husky,
-      vscodeExtensionRecommendations: this.vscodeExtensionRecommendations,
-    });
-    this.commitlint = new Commitlint(project, options, {
-      husky: this.husky,
-      vscodeExtensionRecommendations: this.vscodeExtensionRecommendations,
-      cSpell: this.cSpell,
-    });
-    this.eslintJsdoc = new EslintJsdoc(project, options);
-    this.contributors = new Contributors(project, options);
+    this.husky = new Husky(project, options);
   }
 }
+
+/**
+ * default options for recommended components
+ *
+ * @deprecated use Recommended.defaultOptions
+ */
+export const defaultRecommendedOptions = Recommended.defaultOptions;

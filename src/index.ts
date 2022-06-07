@@ -1,5 +1,6 @@
 export * from "./components/eslint-prettier-fixer";
 export * from "./components/eslint-unicorn";
+export * from "./components/eslint-no-secrets";
 export * from "./components/recommended";
 export * from "./components/husky";
 export * from "./components/commitlint";

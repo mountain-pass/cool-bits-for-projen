@@ -10,11 +10,12 @@ test("cSpell is added with Husky and VscodeExtensionRecommendations", () => {
     name: "test-project",
     defaultReleaseBranch: "main",
   });
+  new CSpell(project);
+
   const husky = new Husky(project);
   const vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
     project
   );
-  new CSpell(project, undefined, { husky, vscodeExtensionRecommendations });
   const snapshot = synthSnapshot(project);
 
   expect(snapshot["package.json"].devDependencies).toHaveProperty("cspell");
@@ -40,14 +41,8 @@ test("cSpell is not added", () => {
     defaultReleaseBranch: "main",
   });
   const husky = new Husky(project);
-  const vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
-    project
-  );
-  new CSpell(
-    project,
-    { cSpell: false },
-    { husky, vscodeExtensionRecommendations }
-  );
+  new VscodeExtensionRecommendations(project);
+  new CSpell(project, { cSpell: false });
   const snapshot = synthSnapshot(project);
 
   expect(snapshot["package.json"].devDependencies).not.toHaveProperty("cspell");
@@ -58,35 +53,6 @@ test("cSpell is not added", () => {
   );
   expect(husky.options.huskyHooks["pre-commit"]).toHaveLength(0);
   expect(snapshot["package.json"].scripts).not.toHaveProperty("spellcheck");
-});
-
-test("cSpell is added without Husky and VscodeExtensionRecommendations", () => {
-  const project = new TypeScriptProject({
-    outdir: mkdtemp(),
-    name: "test-project",
-    defaultReleaseBranch: "main",
-  });
-  const husky = new Husky(project);
-  const vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
-    project
-  );
-  new CSpell(project);
-  const snapshot = synthSnapshot(project);
-
-  expect(snapshot["package.json"].devDependencies).toHaveProperty("cspell");
-  expect(Object.keys(snapshot)).toContain(".cspell.json");
-  expect(Object.keys(snapshot)).toContain(".project-words.txt");
-  expect(husky.options.huskyHooks["commit-msg"]).not.toContain(
-    'npx --no -- cspell lint --show-suggestions "${1}"'
-  );
-  expect(husky.options.huskyHooks["pre-commit"]).toHaveLength(0);
-  expect(snapshot["package.json"].scripts).toHaveProperty("spellcheck");
-  expect(snapshot[".cspell.json"].words).not.toContain(
-    vscodeExtensionRecommendations.options.vscodeExtensionRecommendationsOptions.recommendations[0].split(
-      "."
-    )[0]
-  );
-  expect(snapshot[".cspell.json"].words).not.toContain(husky.getHookNames()[0]);
 });
 
 test("cSpell is added with Husky and VscodeExtensionRecommendations to a JsiiProject", () => {
@@ -103,7 +69,7 @@ test("cSpell is added with Husky and VscodeExtensionRecommendations to a JsiiPro
   const vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
     project
   );
-  new CSpell(project, undefined, { husky, vscodeExtensionRecommendations });
+  new CSpell(project);
   const snapshot = synthSnapshot(project);
 
   expect(snapshot["package.json"].devDependencies).toHaveProperty("cspell");

@@ -34,17 +34,24 @@ const project = new TypeScriptProject({
   ...Recommended.defaultProjectOptions,
   description: "A collection of cool projen components",
   peerDeps: ["projen"],
-  deps: [
+  bundledDeps: [
     "merge",
     "traverse",
-    "@commitlint/types",
-    "@cspell/cspell-types",
     "fs-extra",
-    "@types/fs-extra",
     "shelljs",
+    "cspell",
+    "@cspell/cspell-types",
     "shelljs-plugin-authors",
+    "@commitlint/config-conventional",
+    "@commitlint/cli",
+    "@commitlint/types",
   ],
-  devDeps: ["@types/traverse", "@types/shelljs"],
+  devDeps: [
+    "@types/traverse",
+    "@types/shelljs",
+    "@commitlint/types",
+    "@types/fs-extra",
+  ],
   keywords: [
     "typescript",
     "projen",
@@ -117,7 +124,7 @@ const project = new TypeScriptProject({
 });
 organisational.addToProject(project);
 
-const recommended = new Recommended(project, {
+new Recommended(project, {
   cSpellOptions: {
     language: "en-GB",
     overrides: [
@@ -131,14 +138,9 @@ const recommended = new Recommended(project, {
 });
 
 gitHubber.addToProject(project);
-gitHubber.addDependencies({ cSpell: recommended.cSpell });
 npmReleaser.addToProject(project);
 
-new CodeOfConduct(
-  project,
-  { contactMethod: "tom@mountain-pass.com.au" },
-  { cSpell: recommended.cSpell }
-);
+new CodeOfConduct(project, { contactMethod: "tom@mountain-pass.com.au" });
 
 project.addGitIgnore("/docs");
 

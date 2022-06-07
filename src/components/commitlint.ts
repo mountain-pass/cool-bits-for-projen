@@ -43,35 +43,40 @@ export class Commitlint extends Component {
    *
    * @param project the project to add to
    * @param options - see `CommitLintOptions`
-   * @param dependencies components that Commitlint depends on
-   * @param dependencies.husky used to add a commitlint commit-msg hook
-   * @param dependencies.vscodeExtensionRecommendations used to add vscode commitlint editor plugin recommendation
-   * @param dependencies.cSpell used to add words to the dictionary
    */
   constructor(
     project: NodeProject,
-    options?: Dynamic<CommitlintOptions, NodeProject>,
-    dependencies?: {
-      husky?: Husky;
-      vscodeExtensionRecommendations?: VscodeExtensionRecommendations;
-      cSpell?: CSpell;
-    }
+    options?: Dynamic<CommitlintOptions, NodeProject>
   ) {
     super(project);
     this.options = resolve(project, options, Commitlint.defaultOptions);
     if (this.options.commitlint) {
       project.addDevDeps("@commitlint/config-conventional", "@commitlint/cli");
-      this.commitlintrc = new JsonFile(project, ".commitlintrc.json", {
+    }
+  }
+
+  /**
+   * Called before synthesis.
+   */
+  preSynthesize(): void {
+    if (this.options.commitlint) {
+      this.commitlintrc = new JsonFile(this.project, ".commitlintrc.json", {
         obj: this.options.commitlintOptions,
       });
-      dependencies?.husky?.addHook(
-        "commit-msg",
-        'npx --no -- commitlint --edit "${1}"'
-      );
-      dependencies?.vscodeExtensionRecommendations?.addRecommendations(
-        "adam-bender.commit-message-editor"
-      );
-      dependencies?.cSpell?.addWords("commitlint");
+      for (const component of this.project.components) {
+        if (component instanceof CSpell) {
+          component.addWords("commitlint");
+        }
+        if (component instanceof Husky) {
+          component.addHook(
+            "commit-msg",
+            'npx --no -- commitlint --edit "${1}"'
+          );
+        }
+        if (component instanceof VscodeExtensionRecommendations) {
+          component.addRecommendations("adam-bender.commit-message-editor");
+        }
+      }
     }
   }
 }

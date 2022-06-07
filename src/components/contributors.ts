@@ -1,9 +1,9 @@
-import child_process from "child_process";
+import * as child_process from "child_process";
 // import path from "path";
 // import fs from "fs-extra";
 import { Component } from "projen";
 import { NodeProject } from "projen/lib/javascript";
-import shell from "shelljs";
+import * as shell from "shelljs";
 import "shelljs-plugin-authors";
 import { DeepRequired } from "../util/deep-required";
 import { Dynamic, resolve } from "../util/dynamic";
@@ -49,7 +49,7 @@ export class Contributors extends Component {
       child_process.execSync(
         "if [ $(git rev-parse --is-shallow-repository) = true ];then git fetch --unshallow; fi"
       );
-      const authors = (shell as any).authors();
+      const authors = (shell as any).default.authors();
       this.contributors = new Set<string | Entity>([
         ...this.options.additionalContributors,
         ...authors.stdout.split("\n"),

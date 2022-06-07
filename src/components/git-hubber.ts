@@ -42,14 +42,15 @@ export class GitHubber extends PseudoComponent<NodeProject> {
   }
 
   /**
-   * attach dependencies
+   * Called before synthesis.
    *
-   * @param dependencies components that gitHubber depends on
-   * @param dependencies.cSpell used to add words to the dictionary
+   * @param _project the project to apply to
    */
-  addDependencies(dependencies: { cSpell: CSpell }): void {
-    if (dependencies.cSpell) {
-      dependencies.cSpell.addWords("hubber");
+  preSynthesize(_project: NodeProject): void {
+    for (const component of _project.components) {
+      if (component instanceof CSpell) {
+        component.addWords("hubber");
+      }
     }
   }
 

@@ -1,4 +1,4 @@
-import { CSpellUserSettings } from "@cspell/cspell-types";
+import { CSpellSettings } from "@cspell/cspell-types";
 import { Component, JsonFile, SampleFile } from "projen";
 import { JsiiProject } from "projen/lib/cdk";
 import { NodeProject } from "projen/lib/javascript";
@@ -15,15 +15,15 @@ export type CSpellOptions = {
    * @default true
    */
   cSpell?: boolean;
-  cSpellOptions?: CSpellUserSettings;
+  cSpellOptions?: CSpellSettings;
 };
 
 /**
  * like CSpellOptions but with required fields
  */
 type RequiredCSpellOptions = Required<Omit<CSpellOptions, "cSpellOptions">> & {
-  cSpellOptions: Omit<CSpellUserSettings, "words" | "dictionaryDefinitions"> &
-    Required<Pick<CSpellUserSettings, "words" | "dictionaryDefinitions">>;
+  cSpellOptions: Omit<CSpellSettings, "words" | "dictionaryDefinitions"> &
+    Required<Pick<CSpellSettings, "words" | "dictionaryDefinitions">>;
 };
 
 /**
@@ -63,35 +63,19 @@ export class CSpell extends Component {
 
   options: RequiredCSpellOptions;
   cSpellConfigFile?: JsonFile;
-  dependencies:
-    | {
-        husky?: Husky | undefined;
-        vscodeExtensionRecommendations?:
-          | VscodeExtensionRecommendations
-          | undefined;
-      }
-    | undefined;
 
   /**
    * adds cSpell to the project
    *
    * @param project the project to add to
    * @param options - see `CommitLintOptions`
-   * @param dependencies components that CSpell depends on
-   * @param dependencies.husky used to add a cSpell commit-msg hook
-   * @param dependencies.vscodeExtensionRecommendations used to add vscode cSpell editor plugin recommendation
    */
   constructor(
     project: NodeProject,
-    options?: Dynamic<CSpellOptions, NodeProject>,
-    dependencies?: {
-      husky?: Husky;
-      vscodeExtensionRecommendations?: VscodeExtensionRecommendations;
-    }
+    options?: Dynamic<CSpellOptions, NodeProject>
   ) {
     super(project);
     this.options = resolve(project, options, CSpell.defaultOptions);
-    this.dependencies = dependencies;
     if (this.options.cSpell) {
       project.addDevDeps("cspell");
       // add a spell checker task
@@ -104,42 +88,50 @@ export class CSpell extends Component {
         ],
       });
       project.testTask.spawn(spellCheckTask);
-      // check spelling on commit
-      dependencies?.husky?.addHook(
-        "pre-commit",
-        "git diff --name-only --staged | npx cspell lint --dot --gitignore --show-suggestions --no-must-find-files --file-list stdin"
-      );
-
-      // adds spell checking of the commit message
-      dependencies?.husky?.addHook(
-        "commit-msg",
-        'npx --no -- cspell lint --show-suggestions "${1}"'
-      );
-      this.options.cSpellOptions.words.push(
-        ...(dependencies?.husky?.getHookNames() || [])
-      );
-      // adds spell checker to vscode extension recommendations
-      dependencies?.vscodeExtensionRecommendations?.addRecommendations(
-        "streetsidesoftware.code-spell-checker"
-      );
     }
   }
 
   /**
-   * add the cspell file
+   * Called before synthesis.
    */
   preSynthesize(): void {
     if (this.options.cSpell) {
       const words = new Set<string>([
-        ...(this.dependencies?.vscodeExtensionRecommendations
-          ?.getRecommendations()
-          .flatMap((recommendation) => recommendation.split(".")) || []),
         ...this.project.deps.all
           .map((dep) => dep.name)
           .flatMap((name) => name.split("/"))
           .map((name) => name.replace(/^@/, "")),
         ...this.options.cSpellOptions.words,
       ]);
+
+      for (const component of this.project.components) {
+        if (component instanceof Husky) {
+          // check spelling on commit
+          component.addHook(
+            "pre-commit",
+            "git diff --name-only --staged | npx cspell lint --dot --gitignore --show-suggestions --no-must-find-files --file-list stdin"
+          );
+
+          // adds spell checking of the commit message
+          component.addHook(
+            "commit-msg",
+            'npx --no -- cspell lint --show-suggestions "${1}"'
+          );
+          for (const word of component.getHookNames()) {
+            words.add(word);
+          }
+        }
+        if (component instanceof VscodeExtensionRecommendations) {
+          // adds spell checker to vscode extension recommendations
+          component.addRecommendations("streetsidesoftware.code-spell-checker");
+          for (const word of component
+            .getRecommendations()
+            .flatMap((recommendation) => recommendation.split("."))) {
+            words.add(word);
+          }
+        }
+      }
+
       this.options.cSpellOptions.words = [...words];
       this.options.cSpellOptions.ignorePaths = [
         ...(this.options.cSpellOptions.ignorePaths || []),

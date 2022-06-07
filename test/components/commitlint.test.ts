@@ -13,7 +13,7 @@ test("commitlint is added with Husky and VscodeExtensionRecommendations", () => 
   const vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
     project
   );
-  new Commitlint(project, undefined, { husky, vscodeExtensionRecommendations });
+  new Commitlint(project, undefined);
   const snapshot = synthSnapshot(project);
 
   expect(snapshot["package.json"].devDependencies).toHaveProperty(
@@ -46,11 +46,7 @@ test("commitlint is not added", () => {
   const vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
     project
   );
-  new Commitlint(
-    project,
-    { commitlint: false },
-    { husky, vscodeExtensionRecommendations }
-  );
+  new Commitlint(project, { commitlint: false });
   // THEN
   const snapshot = synthSnapshot(project);
 
@@ -61,39 +57,6 @@ test("commitlint is not added", () => {
     "@commitlint/cli"
   );
   expect(Object.keys(snapshot)).not.toContain(".commitlintrc.json");
-  expect(husky.options.huskyHooks["commit-msg"]).not.toContain(
-    'npx --no -- commitlint --edit "${1}"'
-  );
-  expect(
-    vscodeExtensionRecommendations.options.vscodeExtensionRecommendationsOptions
-      .recommendations
-  ).not.toContain("adam-bender.commit-message-editor");
-});
-
-test("commitlint is added without Husky and VscodeExtensionRecommendations", () => {
-  // WHEN
-  const project = new TypeScriptProject({
-    outdir: mkdtemp(),
-    name: "test-project",
-    defaultReleaseBranch: "main",
-  });
-  const husky = new Husky(project);
-  const vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
-    project
-  );
-  new Commitlint(project, undefined);
-  const snapshot = synthSnapshot(project);
-
-  expect(snapshot["package.json"].devDependencies).toHaveProperty(
-    "@commitlint/config-conventional"
-  );
-  expect(snapshot["package.json"].devDependencies).toHaveProperty(
-    "@commitlint/cli"
-  );
-  expect(Object.keys(snapshot)).toContain(".commitlintrc.json");
-  const commitlintrc = snapshot[".commitlintrc.json"];
-  delete commitlintrc["//"];
-  expect(commitlintrc).toEqual(Commitlint.defaultOptions.commitlintOptions);
   expect(husky.options.huskyHooks["commit-msg"]).not.toContain(
     'npx --no -- commitlint --edit "${1}"'
   );
