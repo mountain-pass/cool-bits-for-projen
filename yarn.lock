@@ -438,6 +438,13 @@
   dependencies:
     chalk "^4.0.0"
 
+"@commitlint/types@^17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-17.0.0.tgz#3b4604c1a0f06c340ce976e6c6903d4f56e3e690"
+  integrity sha512-hBAw6U+SkAT5h47zDMeOu3HSiD0SODw4Aq7rRNh1ceUmL7GyLKYhPbUvlRWqZ65XjBLPHZhFyQlRaPNz8qvUyQ==
+  dependencies:
+    chalk "^4.1.0"
+
 "@cspell/cspell-bundled-dicts@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@cspell/cspell-bundled-dicts/-/cspell-bundled-dicts-6.0.0.tgz#4238871434bec96a13b76d0a3d499d39b0c42126"
@@ -1198,7 +1205,7 @@
 
 "@types/prettier@^2.1.5":
   version "2.6.0"
-  resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.6.0.tgz"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.6.0.tgz#efcbd41937f9ae7434c714ab698604822d890759"
   integrity sha512-G/AdOadiZhnJp0jXCaBQU449W2h716OW/EoXeYkCytxKL06X1WCXB4DZpp8TpZ8eyIJVS1cw4lrlkkSYU21cDw==
 
 "@types/shelljs@^0.8.11":
@@ -1665,7 +1672,7 @@ chalk@^2.0.0, chalk@^2.4.2:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^4.0.0, chalk@^4.1.2:
+chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -1753,10 +1760,10 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^9.2.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-9.2.0.tgz#6e21014b2ed90d8b7c9647230d8b7a94a4a419a9"
-  integrity sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==
+commander@^9.2.0, commander@^9.3.0:
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.3.0.tgz#f619114a5a2d2054e0d9ff1b31d5ccf89255e26b"
+  integrity sha512-hv95iU5uXPbK83mjrJKuZyFM/LBAoCV/XhVGkS5Je6tl7sxr6A0ITMw5WoRV46/UaJ46Nllm3Xt7IaJhXTIkzw==
 
 comment-json@^4.2.2:
   version "4.2.2"
@@ -4019,7 +4026,7 @@ map-obj@^4.0.0:
   resolved "https://registry.npmjs.org/map-obj/-/map-obj-4.3.0.tgz"
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
-marked@^4.0.12:
+marked@^4.0.16:
   version "4.0.16"
   resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.16.tgz#9ec18fc1a723032eb28666100344d9428cf7a264"
   integrity sha512-wahonIQ5Jnyatt2fn8KqF/nIqZM8mh3oRu2+l5EANGMhu6RFjiSG52QNE2eWzFMI94HqYSgN184NurgNG6CztA==
@@ -4093,7 +4100,7 @@ minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^5.0.1:
+minimatch@^5.0.1, minimatch@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.0.tgz#1717b464f4971b144f6aabe8f2d0b8e4511e09c7"
   integrity sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==
@@ -4469,10 +4476,10 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-projen@^0.56.5:
-  version "0.56.35"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.56.35.tgz#96e83cddf5a137d94c885ad2b9d39e43ec691f04"
-  integrity sha512-ZdEM2zo7Epiga9af+HhVqpr2bLdts5cZIW2OmcIiP9HUdCbQQG9i18HkvvSBjHzBcr1iMLmS1g19/ofH0Ut4Dg==
+projen@^0.56.35:
+  version "0.56.41"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.56.41.tgz#76a78b45ae1cea454b25757281761752b3d24fe0"
+  integrity sha512-1I4hfiWIIh8fQyv7YGpFO36KC43e3U0t1bWUEmcUaMtZtqv6W96J7M6K15usLVlxyBjGPfMZRT56HWhwQbUq2A==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
@@ -4750,11 +4757,11 @@ shelljs-exec-proxy@^0.2.1:
     shelljs "^0.8.5"
 
 shelljs-plugin-authors@^2.0.105:
-  version "2.0.105"
-  resolved "https://registry.yarnpkg.com/shelljs-plugin-authors/-/shelljs-plugin-authors-2.0.105.tgz#f2d8b38d8e48db241db1938daf176e071c01bbdb"
-  integrity sha512-1yVk8ngtIXFV1hsVDlB+FGUE9dq/OmfolEliNa5QvbhMyHvLIW6CjF9VTvaJP/T4acX7F5eqZFOjFoJeX4MODg==
+  version "2.0.106"
+  resolved "https://registry.yarnpkg.com/shelljs-plugin-authors/-/shelljs-plugin-authors-2.0.106.tgz#c8fec1bae6ecbd8ad88ea74eed56e3ef9aefe4ab"
+  integrity sha512-w2HFilFzXoxtUhKHtkDudBjr/RC5zV83cy8F3SqkqAAieS6x8JGpLKIepPKKEk4BpNEcKe5kUUY5fgXg86SO8g==
   dependencies:
-    commander "^9.2.0"
+    commander "^9.3.0"
     shelljs-exec-proxy "^0.2.1"
 
 shelljs@^0.8.5:
@@ -5250,14 +5257,14 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 typedoc@*:
-  version "0.22.15"
-  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.22.15.tgz#c6ad7ed9d017dc2c3a06c9189cb392bd8e2d8c3f"
-  integrity sha512-CMd1lrqQbFvbx6S9G6fL4HKp3GoIuhujJReWqlIvSb2T26vGai+8Os3Mde7Pn832pXYemd9BMuuYWhFpL5st0Q==
+  version "0.22.17"
+  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.22.17.tgz#bc51cc95f569040112504300831cdac4f8089b7b"
+  integrity sha512-h6+uXHVVCPDaANzjwzdsj9aePBjZiBTpiMpBBeyh1zcN2odVsDCNajz8zyKnixF93HJeGpl34j/70yoEE5BfNg==
   dependencies:
-    glob "^7.2.0"
+    glob "^8.0.3"
     lunr "^2.3.9"
-    marked "^4.0.12"
-    minimatch "^5.0.1"
+    marked "^4.0.16"
+    minimatch "^5.1.0"
     shiki "^0.10.1"
 
 typescript@^4.4.3, typescript@^4.6.4:
