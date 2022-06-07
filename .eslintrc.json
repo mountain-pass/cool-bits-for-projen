@@ -9,7 +9,8 @@
     "import",
     "prettier",
     "unicorn",
-    "jsdoc"
+    "jsdoc",
+    "no-secrets"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -160,7 +161,8 @@
     "jsdoc/require-asterisk-prefix": "error",
     "jsdoc/require-param-type": "off",
     "jsdoc/require-param-description": "error",
-    "jsdoc/require-returns-type": "off"
+    "jsdoc/require-returns-type": "off",
+    "no-secrets/no-secrets": "error"
   },
   "overrides": [
     {

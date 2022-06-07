@@ -28,20 +28,12 @@ export function mkdtemp() {
  * @returns the files generated
  */
 export function synthSnapshot(project: Project) {
-  //   const ENV_PROJEN_DISABLE_POST = process.env.PROJEN_DISABLE_POST;
   try {
     process.env.PROJEN_DISABLE_POST = "true";
     project.synth();
     return directorySnapshot(project.outdir);
   } finally {
     fs.removeSync(project.outdir);
-
-    // values assigned to process.env.XYZ are automatically converted to strings
-    // if (ENV_PROJEN_DISABLE_POST === undefined) {
-    //   delete process.env.PROJEN_DISABLE_POST;
-    // } else {
-    //   process.env.PROJEN_DISABLE_POST = ENV_PROJEN_DISABLE_POST;
-    // }
   }
 }
 

@@ -19,6 +19,7 @@
     "eslint-import-resolver-typescript",
     "eslint-plugin-import",
     "eslint-plugin-jsdoc",
+    "eslint-plugin-no-secrets",
     "eslint-plugin-prettier",
     "eslint-plugin-unicorn",
     "eslint",
