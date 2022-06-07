@@ -17,6 +17,9 @@ test("unicorn, husky, eslint-prettier-fixer, etc are added to the project", () =
   expect(snapshot["package.json"].devDependencies).toHaveProperty(
     "eslint-plugin-unicorn"
   );
+  expect(snapshot["package.json"].devDependencies).toHaveProperty(
+    "eslint-plugin-no-secrets"
+  );
   expect(snapshot["package.json"].devDependencies).toHaveProperty("husky");
   expect(
     snapshot[".eslintrc.json"].extends[
@@ -48,6 +51,7 @@ test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
     eslintJsdoc: false,
     cSpell: false,
     contributors: false,
+    eslintNoSecrets: false,
   });
   project.eslint?.addExtends("NotPrettier");
   const snapshot = synthSnapshot(project);
@@ -56,6 +60,9 @@ test("unicorn, husky, eslint-prettier-fixer, etc can be turned off", () => {
   expect(project.prettier).not.toBeUndefined();
   expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
     "eslint-plugin-unicorn"
+  );
+  expect(snapshot["package.json"].devDependencies).not.toHaveProperty(
+    "eslint-plugin-no-secrets"
   );
   expect(snapshot["package.json"].devDependencies).not.toHaveProperty("husky");
   expect(

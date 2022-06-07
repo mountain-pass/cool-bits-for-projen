@@ -7,6 +7,7 @@ import { Commitlint, CommitlintOptions } from "./commitlint";
 import { Contributors, ContributorsOptions } from "./contributors";
 import { CSpell } from "./cspell";
 import { EslintJsdoc, EslintJsdocOptions } from "./eslint-jsdoc";
+import { EslintNoSecrets, EslintNoSecretsOptions } from "./eslint-no-secrets";
 import {
   EslintPrettierFixer,
   EslintPrettierFixerOptions,
@@ -31,7 +32,8 @@ export type RecommendedOptions = Dynamic<
   Dynamic<VscodeExtensionRecommendationsOptions, Project> &
   Dynamic<EslintJsdocOptions, TypeScriptProject> &
   Dynamic<CSpellOptions, NodeProject> &
-  Dynamic<ContributorsOptions, NodeProject>;
+  Dynamic<ContributorsOptions, NodeProject> &
+  Dynamic<EslintNoSecretsOptions, TypeScriptProject>;
 
 /**
  * adds MountainPass recommended settings to the project
@@ -41,6 +43,7 @@ export class Recommended extends Component {
     ...EslintPrettierFixer.defaultProjectOptions,
     ...EslintUnicorn.defaultProjectOptions,
     ...EslintJsdoc.defaultProjectOptions,
+    ...EslintNoSecrets.defaultProjectOptions,
   };
   static defaultOptions: RecommendedOptions = {
     ...EslintPrettierFixer.defaultOptions,
@@ -51,6 +54,7 @@ export class Recommended extends Component {
     ...EslintJsdoc.defaultOptions,
     ...CSpell.defaultOptions,
     ...Contributors.defaultOptions,
+    ...EslintNoSecrets.defaultOptions,
   };
   eslintPrettier: EslintPrettierFixer;
   eslintUnicorn: EslintUnicorn;
@@ -60,6 +64,7 @@ export class Recommended extends Component {
   eslintJsdoc: EslintJsdoc;
   cSpell: CSpell;
   contributors: Contributors;
+  eslintNoSecrets: EslintNoSecrets;
   /**
    * adds MountainPass recommended settings to the project
    *
@@ -73,6 +78,7 @@ export class Recommended extends Component {
     this.eslintPrettier = new EslintPrettierFixer(project, options);
     this.eslintUnicorn = new EslintUnicorn(project, options);
     this.eslintJsdoc = new EslintJsdoc(project, options);
+    this.eslintNoSecrets = new EslintNoSecrets(project, options);
     this.contributors = new Contributors(project, options);
     this.vscodeExtensionRecommendations = new VscodeExtensionRecommendations(
       project,
