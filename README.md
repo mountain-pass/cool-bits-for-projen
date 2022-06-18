@@ -97,7 +97,9 @@ project.synth();
 | **`Commitlint`** | Checks if your commit messages meet the [conventional commit format](https://conventionalcommits.org/). | [commitlint](https://github.com/conventional-changelog/commitlint) | NodeProject |  ✅ |
 | **`Contributors`** | Adds github authors to the project's contributors list | [shelljs-plugin-authors](https://github.com/tanem/shelljs-plugin-authors) | NodeProject | ✅ |
 | **`CSpell`** | Provides spell checking for your code and your commit messages | [cspell](https://github.com/streetsidesoftware/cspell) | NodeProject | ✅ |
+| **`EslintIgnore`** | Creates an ESLint ignore file containing the projen generated files |  | TypeScriptProject |  ✅ |
 | **`EslintJsdoc`** | Provides JSDoc specific linting rules for ESLint | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc) | TypeScriptProject |  ✅ |
+| **`EslintJsonC`** | Provides linting of JSON files | [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) | TypeScriptProject |  ✅ |
 | **`EslintNoSecrets`** | Adds an eslint plugin to find strings that might be secrets/credentials | [eslint-plugin-no-secrets](https://github.com/nickdeis/eslint-plugin-no-secrets) | TypeScriptProject |  ✅ |
 | **`EslintPrettierFixer`** | Ensures `prettier` is the last entry in your eslint `extends` section, which is needed for prettier to work correctly with eslint | | TypeScriptProject | ✅ |
 | **`EslintUnicorn`** | Provides more than 100 powerful ESLint rules | [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn) | TypeScriptProject | ✅ |

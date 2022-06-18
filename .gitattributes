@@ -3,6 +3,8 @@
 *.snap linguist-generated
 /.commitlintrc.json linguist-generated
 /.cspell.json linguist-generated
+/.eslintignore linguist-generated
+/.eslintrc-json.json linguist-generated
 /.eslintrc.json linguist-generated
 /.gitattributes linguist-generated
 /.github/dependabot.yml linguist-generated
@@ -24,6 +26,7 @@
 /.projen/files.json linguist-generated
 /.projen/tasks.json linguist-generated
 /.vscode/extensions.json linguist-generated
+/.vscode/settings.json linguist-generated
 /CODE_OF_CONDUCT.md linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated

@@ -6,3 +6,4 @@ prettierignore
 shortlog
 unshallow
 deps
+eslintignore

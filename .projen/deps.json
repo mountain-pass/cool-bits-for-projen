@@ -68,6 +68,10 @@
       "type": "build"
     },
     {
+      "name": "eslint-plugin-jsonc",
+      "type": "build"
+    },
+    {
       "name": "eslint-plugin-no-secrets",
       "type": "build"
     },

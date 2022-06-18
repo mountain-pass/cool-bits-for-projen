@@ -49,12 +49,8 @@ export class EslintJsdoc extends Component {
     this.options = resolve(project, options, EslintJsdoc.defaultOptions);
 
     if (project.eslint && this.options.eslintJsdoc) {
-      project.addDevDeps(
-        "eslint-plugin-jsdoc"
-        // "eslint-plugin-jsdoc-typescript"
-      );
+      project.addDevDeps("eslint-plugin-jsdoc");
       project.eslint.addPlugins("jsdoc");
-      // project.eslint.addPlugins("jsdoc-typescript");
       project.eslint.addExtends("plugin:jsdoc/recommended");
       project.eslint.addRules({
         "jsdoc/require-jsdoc": [

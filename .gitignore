@@ -51,6 +51,9 @@ junit.xml
 /lib
 /dist/
 !/.eslintrc.json
+!/.vscode/settings.json
+!/.eslintignore
+!/.eslintrc-json.json
 !/CODE_OF_CONDUCT.md
 /docs
 !/.cspell.json

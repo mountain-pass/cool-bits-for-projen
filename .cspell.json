@@ -19,6 +19,7 @@
     "eslint-import-resolver-typescript",
     "eslint-plugin-import",
     "eslint-plugin-jsdoc",
+    "eslint-plugin-jsonc",
     "eslint-plugin-no-secrets",
     "eslint-plugin-prettier",
     "eslint-plugin-unicorn",
@@ -46,6 +47,8 @@
     "vscode-projen",
     "dbaeumer",
     "vscode-eslint",
+    "esbenp",
+    "prettier-vscode",
     "streetsidesoftware",
     "code-spell-checker",
     "applypatch-msg",
@@ -106,6 +109,8 @@
     }
   ],
   "ignorePaths": [
+    ".eslintignore",
+    ".eslintrc-json.json",
     ".eslintrc.json",
     ".gitattributes",
     ".github/dependabot.yml",
@@ -122,6 +127,7 @@
     ".projen/deps.json",
     ".projen/files.json",
     ".projen/tasks.json",
+    ".vscode/settings.json",
     "CODE_OF_CONDUCT.md",
     "LICENSE",
     "package.json",

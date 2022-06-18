@@ -1,5 +1,5 @@
 import { TypeScriptProject } from "projen/lib/typescript";
-import { EslintNoSecrets } from "../../src";
+import { EslintJsonC, EslintNoSecrets } from "../../src";
 import { synthSnapshot, mkdtemp } from "../util/util";
 
 test("noSecrets is added to eslint", () => {
@@ -51,4 +51,33 @@ test("noSecrets is not added when eslint is disabled", () => {
     "eslint-plugin-no-secrets"
   );
   expect(Object.keys(snapshot)).not.toContain(".eslintrc.json");
+});
+
+test("noSecrets is added for json linting", () => {
+  const project = new TypeScriptProject({
+    ...EslintNoSecrets.defaultProjectOptions,
+    outdir: mkdtemp(),
+    name: "test-project",
+    defaultReleaseBranch: "main",
+  });
+  new EslintJsonC(project);
+  new EslintNoSecrets(project);
+  const snapshot = synthSnapshot(project);
+
+  expect(Object.keys(snapshot)).toContain(".eslintrc-json.json");
+  expect(snapshot[".eslintrc-json.json"].plugins).toContain("no-secrets");
+});
+
+test("noSecrets is not added for json linting of json linting is disabled", () => {
+  const project = new TypeScriptProject({
+    ...EslintNoSecrets.defaultProjectOptions,
+    outdir: mkdtemp(),
+    name: "test-project",
+    defaultReleaseBranch: "main",
+  });
+  new EslintJsonC(project, { eslintJsonC: false });
+  new EslintNoSecrets(project);
+  const snapshot = synthSnapshot(project);
+
+  expect(Object.keys(snapshot)).not.toContain(".eslintrc-json.json");
 });

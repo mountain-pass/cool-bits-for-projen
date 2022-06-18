@@ -14,6 +14,7 @@
     "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "eslint:json": "npx projen eslint:json",
     "package": "npx projen package",
     "post-compile": "npx projen post-compile",
     "pre-compile": "npx projen pre-compile",
@@ -51,6 +52,7 @@
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsdoc": "^39.2.9",
+    "eslint-plugin-jsonc": "^2.3.0",
     "eslint-plugin-no-secrets": "^0.8.9",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-unicorn": "^42.0.0",
@@ -59,7 +61,7 @@
     "jest-junit": "^13",
     "json-schema": "^0.4.0",
     "prettier": "^2.6.2",
-    "projen": "^0.56.35",
+    "projen": "^0.58.15",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.8.0",
@@ -67,7 +69,7 @@
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
-    "projen": "^0.56.35"
+    "projen": "^0.58.15"
   },
   "dependencies": {
     "@commitlint/cli": "^16.3.0",

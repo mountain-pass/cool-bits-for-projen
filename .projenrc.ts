@@ -73,11 +73,11 @@ const project = new TypeScriptProject({
   projenrcTs: true,
   license: "Apache-2.0",
   codeCov: true,
-  buildWorkflowTriggers: {
-    pullRequest: {},
-    workflowDispatch: {},
-    push: { branches: ["main"] },
-  },
+  // buildWorkflowTriggers: {
+  //   pullRequest: {},
+  //   workflowDispatch: {},
+  //   push: { branches: ["main"] },
+  // },
   docgen: true,
   eslintOptions: {
     dirs: ["."],

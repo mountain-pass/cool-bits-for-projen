@@ -1,0 +1,26 @@
+{
+  "env": {
+    "jest": true,
+    "node": true
+  },
+  "root": true,
+  "plugins": [
+    "prettier",
+    "no-secrets"
+  ],
+  "extends": [
+    "plugin:jsonc/recommended-with-jsonc",
+    "plugin:jsonc/prettier"
+  ],
+  "ignorePatterns": [
+    "*.js",
+    "!.projenrc.ts",
+    "*.d.ts",
+    "node_modules/",
+    "*.generated.ts",
+    "coverage"
+  ],
+  "rules": {
+    "no-secrets/no-secrets": "error"
+  }
+}

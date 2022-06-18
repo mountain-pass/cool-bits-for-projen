@@ -1,10 +1,12 @@
 import { Component } from "projen";
+import { Eslint } from "projen/lib/javascript";
 import {
   TypeScriptProject,
   TypeScriptProjectOptions,
 } from "projen/lib/typescript";
 import { DeepRequired } from "../util/deep-required";
 import { Dynamic, resolve } from "../util/dynamic";
+import { EslintJsonC } from "./eslint-jsonc";
 
 /**
  * option to enable or disable noSecrets in eslint
@@ -47,13 +49,23 @@ export class EslintNoSecrets extends Component {
   ) {
     super(project);
     this.options = resolve(project, options, EslintNoSecrets.defaultOptions);
-
-    if (project.eslint && this.options.eslintNoSecrets) {
-      project.addDevDeps("eslint-plugin-no-secrets");
-      project.eslint.addPlugins("no-secrets");
-      project.eslint.addRules({
-        "no-secrets/no-secrets": "error",
-      });
+    if (this.options.eslintNoSecrets) {
+      const eslint = Eslint.of(this.project);
+      if (eslint) {
+        project.addDevDeps("eslint-plugin-no-secrets");
+        eslint.addPlugins("no-secrets");
+        eslint.addRules({
+          "no-secrets/no-secrets": "error",
+        });
+      }
+      const eslintJsonC = EslintJsonC.of(this.project);
+      if (eslintJsonC) {
+        eslintJsonC.configFile?.addToArray("plugins", "no-secrets");
+        eslintJsonC.configFile?.addOverride(
+          "rules.no-secrets/no-secrets",
+          "error"
+        );
+      }
     }
   }
 }

@@ -1,6 +1,4 @@
 import * as child_process from "child_process";
-// import path from "path";
-// import fs from "fs-extra";
 import { Component } from "projen";
 import { NodeProject } from "projen/lib/javascript";
 import * as shell from "shelljs";

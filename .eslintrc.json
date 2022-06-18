@@ -24,6 +24,8 @@
     "plugin:prettier/recommended",
     "plugin:unicorn/recommended",
     "plugin:jsdoc/recommended",
+    "plugin:jsonc/recommended-with-jsonc",
+    "plugin:jsonc/prettier",
     "prettier"
   ],
   "settings": {
@@ -47,7 +49,9 @@
     "*.d.ts",
     "node_modules/",
     "*.generated.ts",
-    "coverage"
+    "coverage",
+    "!.projenrc.ts",
+    "!projenrc/**/*.ts"
   ],
   "rules": {
     "prettier/prettier": [
@@ -61,7 +65,10 @@
       {
         "devDependencies": [
           "**/test/**",
-          "**/build-tools/**"
+          "**/build-tools/**",
+          "**/projenrc/**",
+          ".projenrc.ts",
+          "projenrc/**/*.ts"
         ],
         "optionalDependencies": false,
         "peerDependencies": true
@@ -181,6 +188,43 @@
       ],
       "rules": {
         "unicorn/prefer-module": "off"
+      }
+    },
+    {
+      "files": [
+        "*.json",
+        "*.json5",
+        "*.jsonc"
+      ],
+      "excludedFiles": [
+        ".eslintignore",
+        ".eslintrc-json.json",
+        ".eslintrc.json",
+        ".gitattributes",
+        ".github/dependabot.yml",
+        ".github/pull_request_template.md",
+        ".github/workflows/auto-approve.yml",
+        ".github/workflows/build.yml",
+        ".github/workflows/pull-request-lint.yml",
+        ".github/workflows/release.yml",
+        ".gitignore",
+        ".mergify.yml",
+        ".npmignore",
+        ".prettierignore",
+        ".prettierrc.json",
+        ".projen/deps.json",
+        ".projen/files.json",
+        ".projen/tasks.json",
+        ".vscode/settings.json",
+        "LICENSE",
+        "package.json",
+        "tsconfig.dev.json",
+        "tsconfig.json"
+      ],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/return-await": "off"
       }
     }
   ]

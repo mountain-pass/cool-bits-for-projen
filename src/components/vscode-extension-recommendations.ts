@@ -1,5 +1,5 @@
 import { Component, JsonFile, Project } from "projen";
-import { TypeScriptProject } from "projen/lib/typescript";
+import { Eslint, Prettier } from "projen/lib/javascript";
 import { DeepRequired } from "../util/deep-required";
 import { Dynamic, resolve } from "../util/dynamic";
 
@@ -31,15 +31,15 @@ export class VscodeExtensionRecommendations extends Component {
     vscodeExtensionRecommendations: true,
     vscodeExtensionRecommendationsOptions: (project: Project) => {
       const recommendations: string[] = ["MarkMcCulloh.vscode-projen"];
-      if (project instanceof TypeScriptProject) {
+      if (project.components.some((component) => component instanceof Eslint)) {
         recommendations.push("dbaeumer.vscode-eslint");
       }
+      if (
+        project.components.some((component) => component instanceof Prettier)
+      ) {
+        recommendations.push("esbenp.prettier-vscode");
+      }
       return { recommendations };
-      // recommendations: [
-      //   "streetsidesoftware.code-spell-checker",
-      //   ,
-      //   "adam-bender.commit-message-editor",
-      // ],
     },
   };
   options: DeepRequired<VscodeExtensionRecommendationsOptions>;
