@@ -33,7 +33,8 @@ const project = new TypeScriptProject({
   ...npmReleaser.nodeProjectOptions(),
   ...Recommended.defaultProjectOptions,
   description: "A collection of cool projen components",
-  peerDeps: ["projen"],
+  typescriptVersion: "4.7.4",
+  peerDeps: ["projen@>0.58.15"],
   bundledDeps: [
     "merge",
     "traverse",

@@ -112,6 +112,7 @@
     },
     {
       "name": "projen",
+      "version": "0.58.16",
       "type": "build"
     },
     {
@@ -134,6 +135,7 @@
     },
     {
       "name": "typescript",
+      "version": "4.7.4",
       "type": "build"
     },
     {
@@ -178,6 +180,7 @@
     },
     {
       "name": "projen",
+      "version": ">0.58.15",
       "type": "peer"
     }
   ],
