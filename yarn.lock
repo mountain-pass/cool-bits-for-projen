@@ -2508,9 +2508,9 @@ eslint-plugin-jsdoc@^39.2.9:
     spdx-expression-parse "^3.0.1"
 
 eslint-plugin-jsonc@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsonc/-/eslint-plugin-jsonc-2.3.0.tgz#7afaae9b4f12bbc3b1d2193ee174d53ee3190c19"
-  integrity sha512-QqHj7Chw8vsALsCOhFxecRIepxpbcpmMon9yA1+GaYk1Am0GanHAwnTkeVX+/ysAb4QTkeGMZ+ZPK4TKrZ/VSw==
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsonc/-/eslint-plugin-jsonc-2.5.0.tgz#b0daea12f0927a3bba99557902ce6e0b48c37b4b"
+  integrity sha512-G257khwkrOQ5MJpSzz4yQh5K12W4xFZRcHmVlhVFWh2GCLDX+JwHnmkQoUoFDbOieSPBMsPFZDTJScwrXiWlIg==
   dependencies:
     eslint-utils "^3.0.0"
     jsonc-eslint-parser "^2.0.4"
