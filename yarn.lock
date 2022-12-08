@@ -1798,7 +1798,7 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^9.3.0, commander@^9.4.1:
+commander@^9.4.1:
   version "9.4.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-9.4.1.tgz#d1dd8f2ce6faf93147295c0df13c7c21141cfbdd"
   integrity sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==
@@ -4869,11 +4869,11 @@ shelljs-exec-proxy@^0.2.1:
     shelljs "^0.8.5"
 
 shelljs-plugin-authors@^2.0.105:
-  version "2.0.107"
-  resolved "https://registry.yarnpkg.com/shelljs-plugin-authors/-/shelljs-plugin-authors-2.0.107.tgz#7b491ba7b874d5248e37992884d86df7dcae3112"
-  integrity sha512-S8b4EnP7xQy05WFs+Ux7Lcog0Qv2duAG1jH+xsKqsrdD/xns2kW605jA6uSxRDNU6je+8Y+JqJL8M4156qJKjQ==
+  version "2.0.123"
+  resolved "https://registry.yarnpkg.com/shelljs-plugin-authors/-/shelljs-plugin-authors-2.0.123.tgz#ccb5c76fd9110486c207bce7dc5b2461034b982d"
+  integrity sha512-nNDp29AQs3LysrUlqt1m//G7AjOtDBTX6R3IcMhYk4Uzg1wYeSw38uedxtfUOn1VFc+PrURNNUarDO5JonYscg==
   dependencies:
-    commander "^9.3.0"
+    commander "^9.4.1"
     shelljs-exec-proxy "^0.2.1"
 
 shelljs@^0.8.5:
